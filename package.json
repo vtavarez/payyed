@@ -1,20 +1,30 @@
 {
-  "name": "client",
+  "name": "payyed",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "@reach/router": "^1.2.1",
+    "axios": "^0.19.0",
+    "bootstrap-css-only": "^4.3.1",
+    "focus-trap-react": "^6.0.0",
+    "formik": "^2.0.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0"
+    "react-helmet": "^5.2.1",
+    "react-scripts": "3.2.0",
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^4.4.1",
+    "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "rescripts start",
+    "build": "rescripts  build",
+    "test": "rescripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -27,5 +37,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.13",
+    "@rescripts/rescript-env": "^0.0.11",
+    "eslint-plugin-jsx-a11y": "^6.2.3"
   }
 }
