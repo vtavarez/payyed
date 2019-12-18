@@ -44,3 +44,9 @@ export const Row = styled.div`
   margin-left: -15px;
   margin-right: -15px;
 `
+
+export const Col = styled.div`
+  flex-grow: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+`

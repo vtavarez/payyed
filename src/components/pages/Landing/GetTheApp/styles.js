@@ -14,11 +14,13 @@ export const SubHeading = styled.p`
 export const AppStore = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-bottom: 5px;
   cursor: pointer;
 `
 
 export const GoogleStore = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-bottom: 5px;
   cursor: pointer;
 `

@@ -5,6 +5,11 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   max-width: 146px;
   width: 100%;
+  margin: 1rem auto 0;
+
+  @media (min-width: 768px){
+    margin: 0 0 0 auto;
+  }
 `
 
 export const Icon = styled.div`

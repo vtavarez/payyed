@@ -6,7 +6,7 @@ import googlestore from "assets/images/googlestore.webp"
 
 function GetTheApp(){
   return (
-    <Wrapper bgColor="#f5f5f5" padding="3.5rem 0">
+    <Wrapper bgColor="#f5f5f5" padding="3rem 0">
       <Contents>
         <Heading>
           Get the app

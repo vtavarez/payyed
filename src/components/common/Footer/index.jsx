@@ -1,15 +1,31 @@
-import React from "react";
+import React from "react"
 import FooterLinks from "./FooterLinks"
 import SocialLinks from "./SocialLinks"
-import { Wrapper, Contents, Row } from "../Grid";
+import Copyright from "./Copyright"
+import PrivacyLinks from "./PrivacyLinks"
+import { Wrapper, Contents, Row, Col } from "../Grid"
+import { Divider } from "./styles"
 
-export function Footer () {
+export function Footer() {
   return (
     <Wrapper padding="4.125rem 0">
       <Contents>
         <Row>
-          <FooterLinks />
-          <SocialLinks />
+          <Col>
+            <FooterLinks />
+          </Col>
+          <Col>
+            <SocialLinks />
+          </Col>
+        </Row>
+        <Divider />
+        <Row>
+          <Col>
+            <Copyright />
+          </Col>
+          <Col>
+            <PrivacyLinks />
+          </Col>
         </Row>
       </Contents>
     </Wrapper>

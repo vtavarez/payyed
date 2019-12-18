@@ -1,10 +1,10 @@
 import React from "react"
 import NavBar from "./Navbar"
-import { Wrapper } from "../Grid"
+import { Wrapper } from "./styles"
 
 export function Header() {
   return (
-    <Wrapper bgColor="#ffffff" padding="0">
+    <Wrapper>
       <NavBar />
     </Wrapper>
   )
