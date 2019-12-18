@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import ReactDOM from "react-dom"
 import FocusTrap from "focus-trap-react"
-import { X } from "components/common"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   Wrapper,
   Content,
@@ -10,7 +10,7 @@ import {
   HiddenInput
 } from "./styles"
 
-const Modal = ({ closeModal, children }) => {
+function Modal({ closeModal, children }) {
   const onKeyDown = ({ keyCode }) => keyCode === 27 && closeModal()
   const onBackdropClicked = e => closeModal()
   const onCloseButtonClicked = e => closeModal()
@@ -38,7 +38,7 @@ const Modal = ({ closeModal, children }) => {
       >
         <CloseButton aria-label="Close Modal" onClick={onCloseButtonClicked}>
           <AccessibleText>Close Modal</AccessibleText>
-          <X color="#2dbe60" size="lg" />
+          <FontAwesomeIcon icon="times" color="#2dbe60" size="lg" />
         </CloseButton>
         <Content>{children}</Content>
         <HiddenInput />

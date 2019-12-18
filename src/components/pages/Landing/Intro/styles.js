@@ -94,7 +94,7 @@ export const Title = styled.h2`
   max-width: ${({ size }) => size === 'lg' ? `700px`:`600px`}
   font-size: ${({ size }) => size === 'lg' ? `4rem`:`3.25rem`}
   color: #ffffff;
-  margin: auto;
+  margin: 0px auto 1rem;
 
   @media (max-width: 767px){
     font-size: 3rem;
@@ -104,6 +104,10 @@ export const Title = styled.h2`
 export const Description = styled.p`
   font-size: 1.3125rem;
   color: #ffffff;
+
+  &:nth-child(3) {
+    margin-bottom: 1.5rem;
+  }
 `
 
 export const DemoButton = styled(ButtonOutlineSecondary)`

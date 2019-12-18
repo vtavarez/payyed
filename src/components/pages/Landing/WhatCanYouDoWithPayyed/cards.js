@@ -1,20 +1,18 @@
-import { faShareSquare, faCheckSquare, faUserFriends, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
-
 export default [
   {
-    icon: faShareSquare,
+    icon: "share-square",
     alt: "Send Money"
   },
   {
-    icon: faCheckSquare,
+    icon: "check-square",
     alt: "Receive Money"
   },
   {
-    icon: faUserFriends,
+    icon: "user-friends",
     alt: "Pay a Friend"
   },
   {
-    icon: faShoppingBag,
+    icon: "shopping-bag",
     alt: "Online Shopping"
   }
 ]

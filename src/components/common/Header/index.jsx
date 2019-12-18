@@ -1,9 +1,11 @@
-import React from 'react';
-import NavBar from './Navbar';
-import { Wrapper } from './styles';
+import React from "react"
+import NavBar from "./Navbar"
+import { Wrapper } from "../Grid"
 
-export const Header = () => (
-  <Wrapper>
-    <NavBar />
-  </Wrapper>
-)
+export function Header() {
+  return (
+    <Wrapper bgColor="#ffffff" padding="0">
+      <NavBar />
+    </Wrapper>
+  )
+}

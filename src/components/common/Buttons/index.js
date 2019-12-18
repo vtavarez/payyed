@@ -45,6 +45,22 @@ export const ButtonPrimary = styled(Button)`
   }
 `
 
+export const ButtonSecondary = styled(Button)`
+  color: #2dbe60;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+
+  &:focus {
+    background-color: #e2e6ea5;
+    border-color: #dae0e5;
+  }
+
+  &:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+  }
+`
+
 export const ButtonOutline = styled(Button)`
   padding: 0.81rem 1rem;
   box-shadow: none;

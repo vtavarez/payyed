@@ -3,7 +3,7 @@ import Hamburger from "components/common/Header/Hamburger"
 import NavbarLinks from "components/common/Header/NavbarLinks"
 import Drawer from "components/common/Header/Drawer"
 import { Link } from "@reach/router"
-import { Content } from "components/common/"
+import { Contents } from "components/common/"
 import { Wrapper, Logo, Nav, NavLink, SignupButton } from "./styles"
 import logo from "assets/illustrations/logo.webp"
 
@@ -12,10 +12,10 @@ const NavBar = () => {
 
   return (
     <>
-    <Wrapper as={Content}>
+    <Wrapper as={Contents}>
       <Logo>
         <Link to="/">
-          <img src={logo} alt="payyed" />
+          <img src={logo} alt="payyed logo" />
         </Link>
       </Logo>
       <Hamburger setToggle={() => setToggle(!toggle)} toggle={toggle} />
@@ -26,7 +26,7 @@ const NavBar = () => {
         <NavLink as={Link} to="/login" aria-label="login to your dashboard">
           Login
         </NavLink>
-        <SignupButton as={Link} to="/sign-up" aria-label="Sign up">
+        <SignupButton as={Link} to="/sign-up" aria-label="Sign up for payyed">
           Sign up
         </SignupButton>
       </Nav>

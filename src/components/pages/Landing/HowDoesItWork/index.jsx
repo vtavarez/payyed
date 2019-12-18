@@ -1,12 +1,6 @@
 import React, { useState } from "react"
-import {
-  Wrapper,
-  Contents,
-  Row,
-  ButtonOutlinePrimary,
-  Play,
-  Check
-} from "components/common"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Wrapper, Contents, Row, ButtonOutlinePrimary } from "components/common"
 import {
   IFrame,
   Video,
@@ -22,7 +16,7 @@ import {
 import Modal from "./Modal"
 import placeholder from "assets/images/placeholder.webp"
 
-const HowDoesItWork = () => {
+function HowDoesItWork() {
   const html = document.querySelector("html")
   const [showModal, setShowModal] = useState(false)
   const closeModal = () => setShowModal(false)
@@ -35,7 +29,12 @@ const HowDoesItWork = () => {
           <Video onClick={openModal}>
             <Placeholder src={placeholder} alt="Payyed Demo Video" />
             <PlayButton aria-label="Play Demo Video">
-              <Play size="lg" color="#2dbe60" transform="right-2" />
+              <FontAwesomeIcon
+                icon="play"
+                size="lg"
+                color="#2dbe60"
+                transform="right-2"
+              />
               <AccessibleText>Play</AccessibleText>
             </PlayButton>
           </Video>
@@ -49,19 +48,19 @@ const HowDoesItWork = () => {
             <List>
               <li>
                 <Icon>
-                  <Check size="1x" />
+                  <FontAwesomeIcon icon="check" size="1x" />
                 </Icon>
                 Sign Up Account
               </li>
               <li>
                 <Icon>
-                  <Check size="1x" />
+                  <FontAwesomeIcon icon="check" size="1x" />
                 </Icon>
                 Receive & Send Payments from worldwide
               </li>
               <li>
                 <Icon>
-                  <Check size="1x" />
+                  <FontAwesomeIcon icon="check" size="1x" />
                 </Icon>
                 Your funds will be transferred to your local bank account
               </li>

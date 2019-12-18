@@ -2,13 +2,14 @@ import styled from "styled-components"
 
 export const Wrapper = styled.div`
   display: flex;
+  position: relative;
   justify-content: center;
   background-color: ${({ bgColor }) => bgColor };
   align-items: center;
   padding: 3.5rem 0;
 
   @media (min-width: 1024px){
-    padding: 6.5rem 0;
+    padding: ${({ padding }) => padding || "6.5rem 0"};
   }
 `
 
