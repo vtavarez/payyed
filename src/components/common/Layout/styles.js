@@ -13,7 +13,7 @@ const Global = createGlobalStyle`
     font-family: "rubikmedium", sans-serif;
     color: #1e1d1c;
   }
-
+  
   p {
     font-family: "rubikregular", sans-serif;
     line-height: 1.9;

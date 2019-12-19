@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import check from "assets/icons/check.svg"
 
 export const Wrapper = styled.div`
   display: flex;
@@ -6,12 +7,12 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 3rem 0 0;
-  width: 100vw;
-  height: 46vh;
+  width: 100%;
+  height: 100%;
   background-color: #f5f5f5
   
   @media (min-width: 768px){
-    width: 50vw;
+    width: 50%;
     height: 100vh;
     padding: 3rem 0;
   }
@@ -22,6 +23,12 @@ export const LoginForm = styled.form`
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+`
+
+export const FormName = styled.h3`
+  font-family: "rubikregular", sans-serif;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
 `
 
 export const InputTextLabelName = styled.div`
@@ -52,6 +59,7 @@ export const FormGroup = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 1.5rem;
 `
 
 export const CheckInputLabelName = styled.span``
@@ -62,21 +70,25 @@ export const CheckInputLabel = styled.label`
   padding-left: 1.5rem;
   margin-bottom: 0;
   line-height: 1.3;
+`
+export const CheckInput = styled.input`
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+`
 
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1rem;
-    height: 1rem;
-    pointer-events: none;
-    border: 1px solid #adb5bd;
-    border-radius: 0.25rem;
-    background-color: #ffffff;
-    transition: all 0.15s ease-in-out;
-  }
+export const StyledCheckInput = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  border: 1px solid #adb5bd;
+  border-color: ${({ checked }) => checked ? "#2dbe60" : "#adb5bd"};
+  border-radius: 0.25rem;
+  background-color: ${({ checked }) => checked ? "#2dbe60" : "#ffffff"};
+  transition: all 0.15s ease-in-out;
 
   &::after {
     content: "";
@@ -86,12 +98,19 @@ export const CheckInputLabel = styled.label`
     left: 0;
     width: 1rem;
     height: 1rem;
-    background: no-repeat 50%/50% 50%;
+    background-repeat: no-repeat;
+    background-position: 40% 30%;
+    background-size: 55%;
+    ${({ checked }) => checked && `background-image: url("${check}")`}
+  }
+
+  ${CheckInput}:focus + & {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
   }
 `
 
-export const CheckInput = styled.input`
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
+export const NeedAccount = styled.p`
+  font-size: 1rem;
+  color: #8e9a9d;
+  margin: 1.5rem 0;
 `

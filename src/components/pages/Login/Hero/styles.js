@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   background-repeat: no-repeat;
   
   @media (min-width: 768px){
-    width: 50vw;
+    width: 50%;
     height: 100vh;
     padding: 3rem 0;
   }
