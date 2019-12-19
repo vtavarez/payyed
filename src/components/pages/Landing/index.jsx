@@ -10,17 +10,19 @@ import GetTheApp from "./GetTheApp"
 
 import { Header, Footer } from "components/common"
 
-export const Landing = () => (
-  <>
-    <Header />
-    <Intro />
-    <WhyShouldYouChoosePayyed />
-    <PaymentSolutionsForAnyone />
-    <WhatCanYouDoWithPayyed />
-    <HowDoesItWork />
-    <WhatPeopleAreSayingAboutPayyed />
-    <AwesomeCustomerSupport />
-    <GetTheApp />
-    <Footer />
-  </>
-)
+export function Landing() {
+  return (
+    <>
+      <Header />
+      <Intro />
+      <WhyShouldYouChoosePayyed />
+      <PaymentSolutionsForAnyone />
+      <WhatCanYouDoWithPayyed />
+      <HowDoesItWork />
+      <WhatPeopleAreSayingAboutPayyed />
+      <AwesomeCustomerSupport />
+      <GetTheApp />
+      <Footer />
+    </>
+  )
+}

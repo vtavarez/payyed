@@ -23,5 +23,11 @@ const Global = createGlobalStyle`
     font-family: "rubikmedium", sans-serif;
     line-height: 1.5;
   }
+
+  input[type=email],
+  input[type=password] {
+    line-height: 1.5;
+    font-size: 1rem;
+  }
 `
 export default Global;
