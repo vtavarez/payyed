@@ -33,6 +33,7 @@ export const ButtonPrimary = styled(Button)`
   color: #f8f9fa;
   background-color: #2dbe60;
   border-color: #2dbe60;
+  margin: ${({ margin }) => margin || "0"}
   ${({ stretch}) => stretch && "width: 100%;"}
 
   &:focus {

@@ -25,7 +25,8 @@ const Global = createGlobalStyle`
   }
 
   input[type=email],
-  input[type=password] {
+  input[type=password],
+  input[type=text] {
     line-height: 1.5;
     font-size: 1rem;
   }

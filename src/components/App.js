@@ -1,6 +1,6 @@
 import React from "react"
 import { Layout } from "components/common"
-import { Landing, Login } from "components/pages"
+import { Landing, Login, Signup } from "components/pages"
 import { Router } from "@reach/router"
 
 const App = () => (
@@ -8,6 +8,7 @@ const App = () => (
     <Router>
       <Landing path="/" />
       <Login path="/login" />
+      <Signup path="/signup" />
     </Router>
   </Layout>
 )

@@ -26,7 +26,7 @@ const NavBar = () => {
         <NavLink as={Link} to="/login" aria-label="login to your dashboard">
           Login
         </NavLink>
-        <SignupButton as={Link} to="/sign-up" aria-label="Sign up for payyed">
+        <SignupButton as={Link} to="/signup" aria-label="Sign up for payyed">
           Sign up
         </SignupButton>
       </Nav>

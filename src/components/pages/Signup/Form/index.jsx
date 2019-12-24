@@ -8,24 +8,18 @@ import {
   Form,
   FormName,
   Error,
-  InputField,
   TextInputLabel,
   TextInput,
   TextInputName,
-  CheckboxInputLabel,
-  CheckboxInput,
-  CheckboxInputName,
-  StyledCheckboxInput,
   Account,
   ButtonLink,
   ButtonPrimary
 } from "components/common"
 
-function LoginForm({
+function Signup({
   values,
   touched,
   errors,
-  setFieldValue,
   handleChange,
   handleBlur,
   handleSubmit
@@ -33,12 +27,26 @@ function LoginForm({
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit}>
-        <FormName>Log In</FormName>
+        <FormName>Sign Up</FormName>
+        <TextInputLabel label="name">
+          <TextInputName>Full Name</TextInputName>
+          <TextInput
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.name}
+            type="text"
+            name="name"
+            placeholder="Enter Your Name"
+            error={touched.name && errors.name}
+          />
+          <ErrorMessage component={Error} name="name" />
+        </TextInputLabel>
         <TextInputLabel label="email">
           <TextInputName>Email Address</TextInputName>
           <TextInput
             onChange={handleChange}
             onBlur={handleBlur}
+            value={values.email}
             type="email"
             name="email"
             placeholder="Enter Your Email"
@@ -51,6 +59,7 @@ function LoginForm({
           <TextInput
             onChange={handleChange}
             onBlur={handleBlur}
+            value={values.password}
             type="password"
             name="password"
             placeholder="Enter Your Password"
@@ -58,29 +67,14 @@ function LoginForm({
           />
           <ErrorMessage component={Error} name="password" />
         </TextInputLabel>
-        <InputField>
-          <CheckboxInputLabel label="rememberMe">
-            <CheckboxInput
-              onChange={() => setFieldValue("rememberMe", !values.rememberMe)}
-              checked={values.rememberMe}
-              type="checkbox"
-              name="rememberMe"
-            />
-            <StyledCheckboxInput checked={values.rememberMe} />
-            <CheckboxInputName>Remember Me</CheckboxInputName>
-          </CheckboxInputLabel>
-          <ButtonLink href="#" fontSize="14px">
-            Forgot Password?
-          </ButtonLink>
-        </InputField>
-        <ButtonPrimary stretch type="submit">
-          Login
+        <ButtonPrimary stretch margin="0.5rem 0" type="submit">
+          Sign Up
         </ButtonPrimary>
       </Form>
       <Account>
-        Don't have an account?{" "}
-        <ButtonLink as={Link} to="/signup">
-          Sign Up
+        Already have an account?{" "}
+        <ButtonLink as={Link} to="/login">
+          Log In
         </ButtonLink>
       </Account>
     </Wrapper>
@@ -89,27 +83,33 @@ function LoginForm({
 
 export default withFormik({
   mapPropsToValues: () => ({
+    name: "",
     email: "",
     password: "",
-    rememberMe: false,
     submitError: false
   }),
   validationSchema: () =>
     Yup.object().shape({
+      name: Yup.string().required("full name is required"),
       email: Yup.string()
         .email()
         .required("email address is required"),
-      password: Yup.string().required("password is required")
+      password: Yup.string()
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+          "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"
+        )
+        .required("password is required")
     }),
   handleSubmit: async (
-    { email, password, rememberMe },
+    { name, email, password },
     { setSubmitting, setFieldValue }
   ) => {
     try {
-      const user = await axios.post("/login", {
+      const user = await axios.post("/signup", {
+        name,
         email,
-        password,
-        rememberMe
+        password
       })
       setSubmitting(false)
     } catch (err) {
@@ -117,4 +117,4 @@ export default withFormik({
       setFieldValue("submitError", true)
     }
   }
-})(LoginForm)
+})(Signup)
