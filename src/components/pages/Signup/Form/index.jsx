@@ -90,7 +90,13 @@ export default withFormik({
   }),
   validationSchema: () =>
     Yup.object().shape({
-      name: Yup.string().required("full name is required"),
+      name: Yup.string()
+        .trim()
+        .matches(
+          /[\w\s]$/,
+          "Name can only contain letters, and cannot include any special characters, punctionations or start with a space"
+        )
+        .required("full name is required"),
       email: Yup.string()
         .email()
         .required("email address is required"),

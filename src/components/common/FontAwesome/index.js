@@ -6,6 +6,7 @@ import {
   faGoogle,
   faYoutube
 } from "@fortawesome/free-brands-svg-icons"
+import { faCircle } from "@fortawesome/free-regular-svg-icons"
 import {
   faChevronRight,
   faChevronLeft,
@@ -19,7 +20,15 @@ import {
   faShareSquare,
   faCheckSquare,
   faUserFriends,
-  faShoppingBag
+  faShoppingBag,
+  faEdit,
+  faCamera,
+  faMobileAlt,
+  faEnvelope,
+  faCreditCard,
+  faUniversity,
+  faCheckCircle,
+
 } from "@fortawesome/free-solid-svg-icons"
 
 library.add(
@@ -36,6 +45,14 @@ library.add(
   faCheckSquare,
   faUserFriends,
   faShoppingBag,
+  faEdit,
+  faCamera,
+  faMobileAlt,
+  faEnvelope,
+  faCreditCard,
+  faUniversity,
+  faCheckCircle,
+  faCircle,
   faFacebookF,
   faTwitter,
   faGoogle,

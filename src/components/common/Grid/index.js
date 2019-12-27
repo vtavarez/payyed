@@ -46,7 +46,11 @@ export const Row = styled.div`
 `
 
 export const Col = styled.div`
-  flex-grow: 1;
+  flex: 1 1 100%;
   padding-left: 15px;
   padding-right: 15px;
+
+  @media (min-width: 1024px){
+    flex: ${({ flex }) => flex ? flex : "auto"};
+  }
 `
