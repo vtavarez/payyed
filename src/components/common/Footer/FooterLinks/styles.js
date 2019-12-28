@@ -23,7 +23,8 @@ export const NavLink = styled.a`
   transition: all 0.2s ease;
   font-weight: 500;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
     color: #2dbe60;
   }

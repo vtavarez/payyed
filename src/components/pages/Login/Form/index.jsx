@@ -1,5 +1,6 @@
-import React, { useEffect } from "react"
-import { Link } from "@reach/router"
+import React, { useEffect, useContext } from "react"
+import { State } from "state"
+import { Link, navigate } from "@reach/router"
 import { withFormik, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from "axios"
@@ -26,13 +27,42 @@ function LoginForm({
   touched,
   errors,
   setFieldValue,
+  setSubmitting,
   handleChange,
-  handleBlur,
-  handleSubmit
+  handleBlur
 }) {
+  const { state, dispatch } = useContext(State)
+
+  useEffect(() => {
+    if(state.authenticated){
+      navigate("/dashboard")
+    }
+    return () => setSubmitting(false)
+    // eslint-disable-next-line
+  },[state.authenticated])
+
+  const fetchUser = async (e) => {
+    e.preventDefault()
+    try {
+      const { email, password, rememberMe } = values
+      const user = await axios.post("/login", {
+        email,
+        password,
+        rememberMe
+      })
+      dispatch({
+        type: "FETCHED_USER",
+        payload: user
+      })
+    } catch (err) {
+      setSubmitting(false)
+      setFieldValue("submitError", true)
+    }
+  }
+
   return (
     <Wrapper>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={fetchUser}>
         <FormName>Log In</FormName>
         <TextInputLabel label="email">
           <TextInputName>Email Address</TextInputName>
@@ -100,21 +130,5 @@ export default withFormik({
         .email()
         .required("email address is required"),
       password: Yup.string().required("password is required")
-    }),
-  handleSubmit: async (
-    { email, password, rememberMe },
-    { setSubmitting, setFieldValue }
-  ) => {
-    try {
-      const user = await axios.post("/login", {
-        email,
-        password,
-        rememberMe
-      })
-      setSubmitting(false)
-    } catch (err) {
-      setSubmitting(false)
-      setFieldValue("submitError", true)
-    }
-  }
+    })
 })(LoginForm)

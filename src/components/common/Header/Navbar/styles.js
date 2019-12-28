@@ -46,7 +46,8 @@ export const NavLink = styled(ButtonLink)`
   padding: 0 0.85em;
   font-size: 14px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
     color: #2dbe60;
   }
@@ -59,7 +60,8 @@ export const SignupButton = styled(ButtonPrimary)`
   text-transform: uppercase;
   margin-left: 1rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
     color: #f8f9fa;
   }

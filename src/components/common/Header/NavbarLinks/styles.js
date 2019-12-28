@@ -7,7 +7,8 @@ export const NavLink = styled.a`
   color: #4c4d4d;
   padding: 0 0.85em;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
     color: #2dbe60;
   }

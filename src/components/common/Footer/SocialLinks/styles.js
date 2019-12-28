@@ -12,14 +12,19 @@ export const Wrapper = styled.div`
   }
 `
 
-export const Icon = styled.div`
+export const Icon = styled.button`
   position: relative;
   width: 26px;
   height: 26px;
   margin: 0px 6px 4px;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: #4d555a;
 
   &::before {
+    font-family: "rubikregular", sans-serif;
     content: '${({ tooltip }) => tooltip}';
     position: absolute;
     max-width: 200px;
@@ -35,7 +40,7 @@ export const Icon = styled.div`
   &::after {
     content: '';
     position: absolute;
-    top: -10px;
+    top: -12px;
     border-width: 0.4rem 0.4rem 0;
     border-top-color: #000000;
     border-right-color: transparent;
@@ -47,10 +52,10 @@ export const Icon = styled.div`
 
   &:nth-child(1){
     &::before {
-      left: -32px;
+      left: -27px;
     }
     &::after {
-      left: -1px;
+      left: 5px;
     }
 
     &::before,
@@ -58,7 +63,8 @@ export const Icon = styled.div`
       opacity: 0;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       &::before,
       &::after {
         opacity: 1;
@@ -70,7 +76,7 @@ export const Icon = styled.div`
 
   &:nth-child(2){
     &::before {
-      left: -20px;
+      left: -22px;
     }
     &::after {
       left: 2px;
@@ -81,7 +87,8 @@ export const Icon = styled.div`
       opacity: 0;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       &::before,
       &::after {
         opacity: 1;
@@ -103,7 +110,8 @@ export const Icon = styled.div`
       opacity: 0;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       &::before,
       &::after {
         opacity: 1;
@@ -114,7 +122,7 @@ export const Icon = styled.div`
   }
   &:nth-child(4){
     &::before {
-      left: -20px;
+      left: -25px;
     }
     &::after {
       left: 5px;
@@ -125,7 +133,8 @@ export const Icon = styled.div`
       opacity: 0;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       &::before,
       &::after {
         opacity: 1;
