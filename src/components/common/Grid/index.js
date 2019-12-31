@@ -49,6 +49,7 @@ export const Col = styled.div`
   flex: 1 1 100%;
   padding-left: 15px;
   padding-right: 15px;
+  ${({ align }) => `text-align: ${align}`}
 
   @media (min-width: 1024px){
     flex: ${({ flex }) => flex ? flex : "auto"};

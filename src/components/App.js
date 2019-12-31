@@ -8,7 +8,7 @@ import {
   Dashboard,
   NotFound,
   Forbidden
-} from "components/pages"
+} from "components/routes"
 import { Router } from "@reach/router"
 
 const App = () => {

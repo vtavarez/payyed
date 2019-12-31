@@ -28,6 +28,8 @@ import {
   faCreditCard,
   faUniversity,
   faCheckCircle,
+  faWallet,
+  faComments
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -53,6 +55,8 @@ library.add(
   faUniversity,
   faCheckCircle,
   faCircle,
+  faComments,
+  faWallet,
   faFacebookF,
   faTwitter,
   faGoogle,

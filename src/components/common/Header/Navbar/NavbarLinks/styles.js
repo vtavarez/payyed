@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const NavLink = styled.a`
   font-family: "rubikmedium", sans-serif;
@@ -12,4 +12,11 @@ export const NavLink = styled.a`
     text-decoration: none;
     color: #2dbe60;
   }
+
+  ${({ pathname, to }) =>
+    pathname === to &&
+    `
+    text-decoration: none;
+    color: #2dbe60;
+  `}
 `

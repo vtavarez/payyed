@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 257px;
   background-color: #ffffff;
   text-align: center;
   padding: 1rem;
@@ -103,7 +102,7 @@ export const EditImage = styled.div`
 export const User = styled.p`
   font-family: "rubikmedium", sans-serif;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.9rem;
 `
 
 export const EditProfile = styled.button`
@@ -114,6 +113,7 @@ export const EditProfile = styled.button`
   background-color: transparent;
   margin-bottom: 0.5rem;
   border: none;
+  line-height: 1.9;
 
   &::before {
     font-family: "rubikregular", sans-serif;

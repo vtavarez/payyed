@@ -1,11 +1,12 @@
-import React, { Fragment, useState } from "react"
-import Hamburger from "components/common/Header/Hamburger"
-import NavbarLinks from "components/common/Header/NavbarLinks"
-import Drawer from "components/common/Header/Drawer"
+import React, { Fragment, useState, useContext } from "react"
 import { Link } from "@reach/router"
 import { Contents } from "components/common/"
-import { Wrapper, Logo, Nav, NavLink, SignupButton } from "./styles"
+import { Wrapper, Logo, Nav } from "./styles"
 import logo from "assets/illustrations/logo.webp"
+import Hamburger from "./Hamburger"
+import NavbarLinks from "./NavbarLinks"
+import LoginSignout from "./LoginSignout"
+import Drawer from "./Drawer"
 
 function NavBar() {
   const [toggle, setToggle] = useState(false)
@@ -22,12 +23,7 @@ function NavBar() {
           <NavbarLinks />
         </Nav>
         <Nav>
-          <NavLink as={Link} to="/login" aria-label="login to your dashboard">
-            Login
-          </NavLink>
-          <SignupButton as={Link} to="/signup" aria-label="Sign up for payyed">
-            Sign up
-          </SignupButton>
+          <LoginSignout />
         </Nav>
       </Wrapper>
       <Drawer toggle={toggle} />

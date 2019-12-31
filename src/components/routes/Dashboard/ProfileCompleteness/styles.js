@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   padding: 1.5rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
   border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
 `
 
 export const Title = styled.h3`

@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarLinks from 'components/common/Header/NavbarLinks';
+import NavbarLinks from '../NavbarLinks';
 import { Wrapper } from './styles';
 
 const Drawer = ({ toggle }) => (

@@ -34,6 +34,7 @@ function LoginForm({
   const { state, dispatch } = useContext(State)
 
   useEffect(() => {
+    console.log(state.authenticated);
     if(state.authenticated){
       navigate("/dashboard")
     }
@@ -44,15 +45,14 @@ function LoginForm({
   const fetchUser = async (e) => {
     e.preventDefault()
     try {
-      const { email, password, rememberMe } = values
-      const user = await axios.post("/login", {
-        email,
-        password,
-        rememberMe
-      })
+      // const { email, password, rememberMe } = values
+      // const user = await axios.post("/login", {
+      //   email,
+      //   password,
+      //   rememberMe
+      // })
       dispatch({
-        type: "FETCHED_USER",
-        payload: user
+        type: "LOGGED_IN"
       })
     } catch (err) {
       setSubmitting(false)
