@@ -6,3 +6,7 @@ export const Title = styled.div`
   border-bottom: 1px solid #e9eff0;
   padding: 0.5rem 1.5rem;
 `
+
+export const Align = styled.div`
+  text-align: ${({ align }) => align ?? align};
+`

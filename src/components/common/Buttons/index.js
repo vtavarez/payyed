@@ -95,3 +95,59 @@ export const ButtonOutlineSecondary = styled(ButtonOutline)`
     background-color: #f8f9fa;
   }
 `
+
+export const ButtonTooltip = styled.button`
+  position: relative;
+  width: fit-content;
+  height: auto;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: #4d555a;
+
+  &::before {
+    font-family: "rubikregular", sans-serif;
+    content: '${({ tooltip }) => tooltip}';
+    position: absolute;
+    max-width: 200px;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.25rem 0.5rem;
+    color: #ffffff;
+    text-align: center;
+    background-color: #000000;
+    border-radius: 0.25rem;
+    transition: all 0.35s ease;
+    opacity: 0;
+    visibility: hidden;
+    text-transform: capitalize;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0.4rem 0.4rem 0;
+    border-top-color: #000000;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-style: solid;
+    transition: all 0.35s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &:hover,
+  &:focus {
+    &:before,
+    &:after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+`

@@ -11,6 +11,7 @@ import {
   faChevronRight,
   faChevronLeft,
   faTimes,
+  faTimesCircle,
   faPlay,
   faCheck,
   faHandPointer,
@@ -29,7 +30,9 @@ import {
   faUniversity,
   faCheckCircle,
   faWallet,
-  faComments
+  faComments,
+  faEllipsisH,
+  faBuilding
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -37,6 +40,7 @@ library.add(
   faChevronRight,
   faChevronLeft,
   faTimes,
+  faTimesCircle,
   faPlay,
   faCheck,
   faHandPointer,
@@ -57,6 +61,8 @@ library.add(
   faCircle,
   faComments,
   faWallet,
+  faEllipsisH,
+  faBuilding,
   faFacebookF,
   faTwitter,
   faGoogle,

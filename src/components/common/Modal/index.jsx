@@ -10,10 +10,23 @@ import {
   HiddenInput
 } from "./styles"
 
-function Modal({ closeModal, children }) {
-  const onKeyDown = ({ keyCode }) => keyCode === 27 && closeModal()
-  const onBackdropClicked = e => closeModal()
-  const onCloseButtonClicked = e => closeModal()
+export function Modal({ closeModal, children }) {
+  const onKeyDown = e => {
+    e.stopPropagation()
+    if (e.keyCode === 27) {
+      closeModal()
+    }
+  }
+  const onBackdropClicked = e => {
+    e.stopPropagation()
+    closeModal()
+  }
+
+  const onCloseButtonClicked = e => {
+    e.stopPropagation()
+    closeModal()
+  }
+
   const html = document.querySelector("html")
 
   useEffect(() => {
@@ -47,5 +60,3 @@ function Modal({ closeModal, children }) {
     document.body
   )
 }
-
-export default Modal

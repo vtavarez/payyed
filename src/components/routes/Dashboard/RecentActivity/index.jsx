@@ -1,17 +1,23 @@
 import React from "react"
-import {
-  Wrapper,
-  Title
-} from "./styles"
-import TransactionTitle from "./TransactionTitle"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { ButtonLink } from "components/common"
+import { Wrapper, Title, ViewAll } from "./styles"
+import TransactionTitles from "./TransactionTitles"
 import Transaction from "./Transaction"
 
 function RecentActivity() {
   return (
     <Wrapper>
       <Title>Recent Activity</Title>
-      <TransactionTitle />
-      <Transaction />
+      <TransactionTitles />
+      {Array.from({ length: 7 }).map((_, i) => (
+        <Transaction key={i} />
+      ))}
+      <ViewAll>
+        <ButtonLink href="#">
+          View all <FontAwesomeIcon icon="chevron-right" transform="shrink-2" />
+        </ButtonLink>
+      </ViewAll>
     </Wrapper>
   )
 }

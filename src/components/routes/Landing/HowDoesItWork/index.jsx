@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Wrapper, Contents, Row, ButtonOutlinePrimary } from "components/common"
+import { Wrapper, Contents, Row, Modal, ButtonOutlinePrimary } from "components/common"
 import {
   IFrame,
   Video,
@@ -13,11 +13,9 @@ import {
   List,
   AccessibleText
 } from "./styles"
-import Modal from "./Modal"
 import placeholder from "assets/images/placeholder.webp"
 
 function HowDoesItWork() {
-  const html = document.querySelector("html")
   const [showModal, setShowModal] = useState(false)
   const closeModal = () => setShowModal(false)
   const openModal = () => setShowModal(true)

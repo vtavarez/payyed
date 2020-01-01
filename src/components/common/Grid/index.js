@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   padding: 3.5rem 0;
 
   @media (min-width: 1024px){
-    padding: ${({ padding }) => padding || "6.5rem 0"};
+    padding: ${({ padding }) => padding ?? "6.5rem 0"};
   }
 `
 
@@ -40,18 +40,18 @@ export const Contents = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: ${({ justify }) => justify ? justify : 'flex-start'}
+  justify-content: ${({ justify }) => justify ?? 'flex-start'}
   margin-left: -15px;
   margin-right: -15px;
 `
 
 export const Col = styled.div`
-  flex: 1 1 100%;
+  flex: ${({ flexSM }) => flexSM ?? "1 1 100%"};
+  position: relative;
   padding-left: 15px;
   padding-right: 15px;
-  ${({ align }) => `text-align: ${align}`}
 
   @media (min-width: 1024px){
-    flex: ${({ flex }) => flex ? flex : "auto"};
+    flex: ${({ flex }) => flex ?? "auto"};
   }
 `
