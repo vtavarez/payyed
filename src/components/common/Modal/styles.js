@@ -11,10 +11,14 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 0.5rem;
   background-color: rgba(0, 0, 0, 0.8);
   outline: 0;
+
+  @media (min-width: 768px){
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 `
 
 const transform = keyframes`

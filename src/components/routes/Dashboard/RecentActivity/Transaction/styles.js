@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Wrapper = styled.div`
   border-bottom: 1px solid #e9eff0;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
   cursor: pointer;
 
   &:hover {
@@ -50,8 +50,12 @@ export const Sign = styled.span`
 `
 
 export const Amount = styled.span`
-  white-space: nowrap;
-  margin-right: 5px;
+  display: inline-block;
+
+  @media (min-width: 768px){
+    display: inline;
+    margin-right: 5px;
+  }
 `
 
 export const Currency  = styled.span`

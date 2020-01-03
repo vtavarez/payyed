@@ -8,11 +8,12 @@ import WhatPeopleAreSayingAboutPayyed from "./WhatPeopleAreSayingAboutPayyed"
 import AwesomeCustomerSupport from "./AwesomeCustomerSupport"
 import GetTheApp from "./GetTheApp"
 
-import { Header, Footer } from "components/common"
+import { Header, Footer, SEO } from "components/common"
 
 export function Landing() {
   return (
     <>
+      <SEO />
       <Header />
       <Intro />
       <WhyShouldYouChoosePayyed />

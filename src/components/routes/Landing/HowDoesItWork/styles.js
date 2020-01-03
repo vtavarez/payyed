@@ -2,10 +2,15 @@ import styled from "styled-components"
 
 export const IFrame = styled.iframe`
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  height: 220px;
+
+  @media (min-width: 768px){
+    height: 420px;
+  }
+  @media (min-width: 1024px){
+    height: 450px;
+  }
 `
 
 export const Video = styled.div`

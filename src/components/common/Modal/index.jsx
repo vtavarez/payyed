@@ -10,7 +10,7 @@ import {
   HiddenInput
 } from "./styles"
 
-export function Modal({ closeModal, children }) {
+export function Modal({ closeModal, noCloseButton, children }) {
   const onKeyDown = e => {
     e.stopPropagation()
     if (e.keyCode === 27) {
@@ -31,7 +31,9 @@ export function Modal({ closeModal, children }) {
 
   useEffect(() => {
     html.style.overflow = "hidden"
-    html.style.marginLeft = "-15px"
+    if (window.innerWidth > 1024) {
+      html.style.marginLeft = "-15px"
+    }
     return () => {
       html.style.overflow = "auto"
       html.style.marginLeft = "0"
@@ -49,10 +51,12 @@ export function Modal({ closeModal, children }) {
         onKeyDown={onKeyDown}
         onClick={onBackdropClicked}
       >
-        <CloseButton aria-label="Close Modal" onClick={onCloseButtonClicked}>
-          <AccessibleText>Close Modal</AccessibleText>
-          <FontAwesomeIcon icon="times" color="#2dbe60" size="lg" />
-        </CloseButton>
+        {!noCloseButton && (
+          <CloseButton aria-label="Close Modal" onClick={onCloseButtonClicked}>
+            <AccessibleText>Close Modal</AccessibleText>
+            <FontAwesomeIcon icon="times" color="#2dbe60" size="lg" />
+          </CloseButton>
+        )}
         <Content>{children}</Content>
         <HiddenInput />
       </Wrapper>

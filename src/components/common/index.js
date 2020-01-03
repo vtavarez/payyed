@@ -1,5 +1,6 @@
 export * from "./Layout"
 export * from "./Grid"
+export * from "./SEO"
 export * from "./Header"
 export * from "./Footer"
 export * from "./Buttons"

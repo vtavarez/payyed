@@ -1,11 +1,16 @@
 import styled from "styled-components"
 
 export const Wrapper = styled.div`
+  display: none;
   position: absolute;
   text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media (min-width: 768px){
+    display: block;
+  }
 `
 
 export const AccessibleText = styled.span`

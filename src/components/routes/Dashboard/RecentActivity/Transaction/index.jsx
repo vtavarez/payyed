@@ -15,39 +15,39 @@ import {
   Sign
 } from "./styles"
 
-function Transaction({ name, description, amount, currency, status, date }) {
+function Transaction() {
   const [showModal, setShowModal] = useState(false)
   const closeModal = () => setShowModal(false)
   const openModal = () => setShowModal(true)
   return (
     <Wrapper onClick={openModal}>
       <Row>
-        <Col flexSM="0.6" flex="0.6">
+        <Col flexSM="1" flex="1">
           <Date>
             <Day>16</Day>
             <Month>APR</Month>
           </Date>
         </Col>
-        <Col flexSM="4" flex="7">
+        <Col flexSM="8" flex="7">
           <TransactionName>HDFC Bank</TransactionName>
           <TransactionDescription>
             Withdraw to Bank account
           </TransactionDescription>
         </Col>
-        <Col flexSM="1" flex="0.7">
+        <Col flexSM="0" flex="2">
           <TransactionStatus status="processing" />
         </Col>
         <Col flexSM="3" flex="2">
           <TransactionAmount>
             <Sign>-</Sign>
-            <Amount>572.00</Amount>
+            <Amount>$572</Amount>
             <Currency>(usd)</Currency>
           </TransactionAmount>
         </Col>
       </Row>
       {showModal && (
-        <Modal closeModal={closeModal}>
-          <TransactionDetails />
+        <Modal closeModal={closeModal} noCloseButton>
+          <TransactionDetails closeModal={closeModal} />
         </Modal>
       )}
     </Wrapper>
