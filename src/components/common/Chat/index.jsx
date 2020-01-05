@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ButtonPrimary } from "components/common"
 import { Wrapper, Icon, Heading, SubHeading } from "./styles"
 
-function Chat() {
+export function Chat() {
   return (
     <Wrapper>
       <Icon>
@@ -18,5 +18,3 @@ function Chat() {
     </Wrapper>
   )
 }
-
-export default Chat

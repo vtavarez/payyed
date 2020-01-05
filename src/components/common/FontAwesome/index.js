@@ -29,10 +29,13 @@ import {
   faCreditCard,
   faUniversity,
   faCheckCircle,
+  faSlidersH,
   faWallet,
+  faFileDownload,
   faComments,
   faEllipsisH,
-  faBuilding
+  faBuilding,
+  faCalendarAlt
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -60,7 +63,10 @@ library.add(
   faCheckCircle,
   faCircle,
   faComments,
+  faCalendarAlt,
+  faSlidersH,
   faWallet,
+  faFileDownload,
   faEllipsisH,
   faBuilding,
   faFacebookF,

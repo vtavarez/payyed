@@ -1,0 +1,22 @@
+.daterangepicker {
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.176);
+}
+
+.daterangepicker .drp-buttons .btn {
+  font-family: "rubikmedium", sans-serif;
+  font-weight: normal;
+  font-size: 0.775rem;
+  line-height: 1.5;
+}
+
+.daterangepicker .drp-buttons .drp-apply {
+  background-color: #2dbe60;
+  border-color: #2dbe60;
+  color: #ffffff;
+  border-radius: 0.2rem;
+  transition: all 0.5s ease;
+}
+
+.daterangepicker .drp-buttons .drp-apply:hover {
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}

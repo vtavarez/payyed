@@ -15,10 +15,10 @@ export const Wrapper = styled.div`
 
 export const Contents = styled.div`
   width: 100%;
-  padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
+  padding-right: 15px;
   margin-left: auto;
+  margin-right: auto;
 
   @media (min-width: 576px) {
     max-width: 540px;
@@ -46,14 +46,13 @@ export const Row = styled.div`
 `
 
 export const Col = styled.div`
-  ${({ flexSM }) => flexSM === "0" ? "display: none;" : `flex: ${flexSM};`}
-  ${({ flexSM }) => !flexSM && "flex: 1 1 100%;"}
+  display: ${({ flexSM }) => flexSM === "0" ? "none" : "block"}
+  flex: ${({ flexSM }) => flexSM ? flexSM : "1 1 100%"};
   position: relative;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: ${({ noPaddingLeft }) => noPaddingLeft ? "0" : "15px"};
+  padding-right: ${({ noPaddingRight }) => noPaddingRight ? "0" : "15px"};
 
   @media (min-width: 768px){
-    display: block;
     flex: ${({ flex }) => flex ?? "auto"};
   }
 `

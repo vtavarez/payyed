@@ -10,7 +10,7 @@ import {
   EditProfile
 } from "./styles"
 
-function Profile() {
+export function Profile() {
   const [focused, setFocus] = useState(false)
   const setFocusState = () => setFocus(!focused)
   const onFileInputClick = e => {
@@ -50,5 +50,3 @@ function Profile() {
     </Wrapper>
   )
 }
-
-export default Profile

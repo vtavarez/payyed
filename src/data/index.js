@@ -1,5 +1,5 @@
 export default {
-  defaultTitle: "Payyed - Money Transfer & Online Payments",
+  defaultTitle: "Payyed - Quickly Send & Receive Money",
   logo: "",
   author: "",
   url: "",

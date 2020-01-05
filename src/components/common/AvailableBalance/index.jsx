@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ButtonLink } from "components/common"
 import { Wrapper, Icon, Balance, Title, Links } from "./styles"
 
-function AvailableBalance() {
+export function AvailableBalance() {
   return (
     <Wrapper>
       <Icon>
@@ -26,5 +26,3 @@ function AvailableBalance() {
     </Wrapper>
   )
 }
-
-export default AvailableBalance

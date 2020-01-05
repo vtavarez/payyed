@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import Intro from "./Intro"
 import WhyShouldYouChoosePayyed from "./WhyShouldYouChoosePayyed"
 import PaymentSolutionsForAnyone from "./PaymentSolutionsForAnyone"
@@ -12,7 +12,7 @@ import { Header, Footer, SEO } from "components/common"
 
 export function Landing() {
   return (
-    <>
+    <Fragment>
       <SEO />
       <Header />
       <Intro />
@@ -24,6 +24,6 @@ export function Landing() {
       <AwesomeCustomerSupport />
       <GetTheApp />
       <Footer />
-    </>
+    </Fragment>
   )
 }

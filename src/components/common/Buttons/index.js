@@ -22,7 +22,16 @@ export const Button = styled.button`
 
 export const ButtonLink = styled.a`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
-  color: #2dbe60;;
+  color: #2dbe60;
+
+  &:hover {
+    color: #2dbe60;
+  }
+`
+
+export const ButtonLinkSecondary = styled.a`
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
+  color: #8e9a9d;
 
   &:hover {
     color: #2dbe60;
