@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import check from "assets/icons/check.svg"
+import dot from "assets/icons/dot.svg"
 
 export const Form = styled.form`
   width: 100%;
@@ -37,7 +38,7 @@ export const TextInputLabel = styled.label`
   width: 100%;
 `
 
-export const TextInput = styled.input`
+export const TextInput = styled.input.attrs({ type: "text" })`
   width: 100%;
   padding: 0.810rem 0.96rem;
   border: 1px solid #dae1e3;
@@ -62,7 +63,7 @@ export const CheckboxInputLabel = styled.label`
   line-height: 1.3;
 `
 
-export const CheckboxInput = styled.input`
+export const CheckboxInput = styled.input.attrs({ type: "checkbox"})`
   position: absolute;
   z-index: -1;
   opacity: 0;
@@ -100,8 +101,64 @@ export const StyledCheckboxInput = styled.div`
   }
 `
 
+export const RadioInputLabel = styled.label`
+  display: inline-block; 
+  position: relative;
+  padding-left: 1.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  line-height: 1.3;
+`
+
+export const RadioInput = styled.input.attrs({ type: "radio" })`
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+`
+
 export const Account = styled.p`
   font-size: 1rem;
   color: #8e9a9d;
   margin: 1.5rem 0;
+`
+
+export const StyledRadioInput = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  border: 1px solid #adb5bd;
+  border-color: #adb5bd;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: all 0.15s ease-in-out;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    transform: translate(-1.5px, -1.5px);
+  }
+
+  ${RadioInput}:focus + & {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+
+  ${RadioInput}:checked + & {
+    background-color: #2dbe60;
+    border-color: #2dbe60;
+
+    &::after {
+      background-image: url("${dot}");
+    }
+  }
 `

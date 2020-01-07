@@ -7,6 +7,10 @@ export const Wrapper = styled.div`
   border-radius: 0.25rem;
   text-align: center;
   margin-bottom: 1.5rem;
+
+  @media (min-width: 1024px){
+    min-width: 263px
+  }
 `
 
 export const Icon = styled.div`

@@ -11,6 +11,10 @@ export const Wrapper = styled.div`
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
   border-radius: 0.25rem;
   margin-bottom: 1.5rem;
+
+  @media (min-width: 1024px){
+    min-width: 263px
+  }
 `
 
 export const ProfileImage = styled.div`

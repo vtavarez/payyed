@@ -53,6 +53,7 @@ export const Col = styled.div`
   padding-right: ${({ noPaddingRight }) => noPaddingRight ? "0" : "15px"};
 
   @media (min-width: 768px){
+    display: block;
     flex: ${({ flex }) => flex ?? "auto"};
   }
 `

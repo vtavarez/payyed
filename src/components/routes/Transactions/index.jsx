@@ -22,12 +22,12 @@ export function Transactions() {
       <Wrapper bgColor="#f5f5f5" padding="1.5rem 0">
         <Contents>
           <Row>
-            <Col flex="3">
+            <Col flex="2">
               <Profile />
               <AvailableBalance />
               <Chat />
             </Col>
-            <Col flex="9">
+            <Col flex="10">
               <Filters />
               <AllTransactions />
             </Col>
