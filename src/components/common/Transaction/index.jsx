@@ -15,7 +15,7 @@ import {
   Sign
 } from "./styles"
 
-function Transaction() {
+export function Transaction() {
   const [showModal, setShowModal] = useState(false)
   const closeModal = () => setShowModal(false)
   const openModal = () => setShowModal(true)
@@ -53,5 +53,3 @@ function Transaction() {
     </Wrapper>
   )
 }
-
-export default Transaction

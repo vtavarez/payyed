@@ -16,3 +16,10 @@ export const Title = styled.h3`
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 `
+
+export const ViewAll = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+`

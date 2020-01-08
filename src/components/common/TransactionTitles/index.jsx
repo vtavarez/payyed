@@ -2,7 +2,7 @@ import React from "react"
 import { Row, Col } from "components/common"
 import { Title, Date, Description, Status, Amount } from "./styles"
 
-function TransactionTitles() {
+export function TransactionTitles() {
   return (
     <Title>
       <Row>
@@ -30,5 +30,3 @@ function TransactionTitles() {
     </Title>
   )
 }
-
-export default TransactionTitles

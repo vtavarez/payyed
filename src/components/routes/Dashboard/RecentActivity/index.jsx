@@ -1,13 +1,21 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Transactions, ButtonLink } from "components/common"
-import { Wrapper, Title } from "./styles"
+import { Transaction, TransactionTitles, ButtonLink } from "components/common"
+import { Wrapper, Title, ViewAll } from "./styles"
 
 function RecentActivity() {
   return (
     <Wrapper>
       <Title>Recent Activity</Title>
-      <Transactions recent/>
+      <TransactionTitles />
+      {Array.from({ length: 7 }).map((_, i) => (
+        <Transaction key={i} />
+      ))}
+      <ViewAll>
+        <ButtonLink href="#">
+          View all <FontAwesomeIcon icon="chevron-right" transform="shrink-2" />
+        </ButtonLink>
+      </ViewAll>
     </Wrapper>
   )
 }
