@@ -76,12 +76,12 @@ export const Wrapper = styled.div`
   padding: 0 15px;
   
   @media (min-width: 1024px){
-    align-items: ${({ align }) => `${align}`}
-    margin-left: ${({ align }) => align === "start" && "100px"}
+    align-items: ${({ align }) => `${align}`};
+    margin-left: ${({ align }) => align === "start" && "100px"};
   }
   
   @media (min-width: 1900px){
-    margin-left: ${({ align }) => align === "start" && "600px"}
+    margin-left: ${({ align }) => align === "start" && "600px"};
   }
   `
   
@@ -95,13 +95,13 @@ export const Content = styled.div`
 `
 
 export const Title = styled.h2`
-  max-width: ${({ size }) => (size === "lg" ? `700px` : `600px`)}
+  max-width: ${({ size }) => (size === "lg" ? `700px` : `600px`)};
   font-size: 3rem;
   color: #ffffff;
   margin: 0px auto 1rem;
   
   @media (min-width: 768px){
-    font-size: ${({ size }) => (size === "lg" ? `4rem` : `3.25rem`)}
+    font-size: ${({ size }) => (size === "lg" ? `4rem` : `3.25rem`)};
   }
 `
 

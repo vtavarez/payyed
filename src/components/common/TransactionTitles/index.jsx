@@ -6,22 +6,22 @@ export function TransactionTitles() {
   return (
     <Title>
       <Row>
-        <Col flexSM="1" flex="1">
+        <Col flexSM="1" flexMD="1" flex="1">
           <Date>
             Date
           </Date>
         </Col>
-        <Col flexSM="8" flex="7">
+        <Col flexSM="8" flexMD="7" flex="7">
           <Description>
             Description
           </Description>
         </Col>
-        <Col flexSM="0" flex="2">
+        <Col flexSM="0" flexMD="2" flex="2">
           <Status>
             Status
           </Status>
         </Col>
-        <Col flexSM="3" flex="2">
+        <Col flexSM="3" flexMD="2" flex="2">
           <Amount>
             Amount
           </Amount>

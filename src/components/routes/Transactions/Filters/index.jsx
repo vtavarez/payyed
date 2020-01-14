@@ -12,10 +12,10 @@ function Filters() {
       <Title>Transactions</Title>
       <form>
         <Row>
-          <Col flex="5">
+          <Col flexMD="6" flex="5">
             <DatePicker />
           </Col>
-          <Col flex="7">
+          <Col flexMD="6" flex="7">
             <OptionButtons toggleFilters={() => setToggledFilters(!toggledFilters)} />
           </Col>
         </Row>

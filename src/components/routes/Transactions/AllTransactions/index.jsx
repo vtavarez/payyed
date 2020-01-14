@@ -4,18 +4,18 @@ import { Wrapper, Title } from "./styles"
 
 function AllTransactions() {
   // fake data set
-  const transactions = Array.from({ length: 50 })
+  const transactions = Array.from({ length: 200 })
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const numberOfTransactionsToShow = 7
-  const numberOfTransactions = Math.ceil(
+  const totalNumberOfChunks = Math.ceil(
     transactions.length / numberOfTransactionsToShow
   )
   const fromIndex = currentIndex * numberOfTransactionsToShow
   const toIndex =
     currentIndex === 0
       ? numberOfTransactionsToShow
-      : fromIndex + numberOfTransactions
+      : fromIndex + numberOfTransactionsToShow
 
   return (
     <Wrapper>
@@ -27,7 +27,7 @@ function AllTransactions() {
       <Pagination
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
-        total={numberOfTransactions}
+        total={totalNumberOfChunks}
       />
     </Wrapper>
   )

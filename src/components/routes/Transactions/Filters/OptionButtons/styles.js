@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   padding: 1rem 0;
   margin-bottom: 1rem;
 
-  @media (min-width: 768px){
+  @media (min-width: 992px){
     margin-left: -10px;
     margin-bottom: 0;
   }

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
-  border-radius: 0.25rem
+  border-radius: 0.25rem;
   background-color: #ffffff;
 
   @media (min-width: 768px){
@@ -73,8 +73,8 @@ export const Title = styled.h5`
 
 export const Divider = styled.hr`
   border-top: 1px solid rgba(16,85,96,0.1);
-  margin-top: ${({ mt }) => mt ? mt : "0"}
-  margin-bottom: ${({ mb }) => mb ? mb : "0"}
+  margin-top: ${({ mt }) => mt ? mt : "0"};
+  margin-bottom: ${({ mb }) => mb ? mb : "0"};
 `
 
 export const CloseButton = styled.button`

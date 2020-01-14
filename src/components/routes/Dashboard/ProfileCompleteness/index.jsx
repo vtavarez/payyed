@@ -12,7 +12,7 @@ function ProfileCompleteness() {
       </Title>
       <Row justify="space-between">
         {categories.map(({ icon, link }, index) => (
-          <Col key={index} flex="1">
+          <Col key={index} flexMD="3" flex="3">
             <Category>
               <FontAwesomeIcon
                 icon={icon}
