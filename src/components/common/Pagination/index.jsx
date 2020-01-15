@@ -1,16 +1,33 @@
-import React, { Fragment, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Wrapper, Arrow, Link, Dots } from "./styles"
 
 export function Pagination({ currentIndex, setCurrentIndex, total }) {
-  const firstIndex = 0
-  const lastIndex = total - 1
   const pages = Array.from({ length: total }, (_,i) => i + 1)
-  const [pagesChunk, setPagesChunk ] = useState(pages.slice(0, 3))
+  console.log(pages, currentIndex);
+  const firstIndex = 0
+  const lastIndex = pages.length - 1;
+  const [chunk, setChunk] = useState(pages.slice(currentIndex, currentIndex + 3))
 
-  if(currentIndex + 1 > pagesChunk[pagesChunk.length - 1]){
-    setPagesChunk(pages.slice(currentIndex, currentIndex + 3));
-  }
+  useEffect(() => {
+
+    if(currentIndex + 1 > chunk[chunk.length - 1] && currentIndex + 5 !== pages[lastIndex]){
+      setChunk(pages.slice(currentIndex, currentIndex + 3))
+    }
+
+    if(currentIndex + 1 < chunk[firstIndex]){
+      setChunk(pages.slice(currentIndex - 2, currentIndex + 1))
+    }
+
+    if(currentIndex + 5 === pages[lastIndex]){
+      setChunk(pages.slice(currentIndex))
+    }
+
+    if(currentIndex + 1 === pages[lastIndex]){
+      setChunk(pages.slice(-5))
+    }
+    //eslint-disable-next-line
+  },[currentIndex])
 
   const onPreviousArrowClick = e => {
     e.preventDefault()  
@@ -41,7 +58,7 @@ export function Pagination({ currentIndex, setCurrentIndex, total }) {
       >
         <FontAwesomeIcon icon="chevron-left" size="sm" />
       </Arrow>
-      {pagesChunk.map((page, i) => (
+      {chunk.map((page, i) => (
         <Link
           role="button"
           key={i}
@@ -51,11 +68,11 @@ export function Pagination({ currentIndex, setCurrentIndex, total }) {
           {page}
         </Link>
       ))}
-      <Dots hide={currentIndex + 1 >= lastIndex}>.....</Dots>
+      <Dots hide={currentIndex + 4 >= lastIndex}>.....</Dots>
       <Link
         role="button"
         onClick={e => onLinkClick(e,lastIndex)}
-        hide={currentIndex + 1 >= lastIndex}
+        hide={currentIndex + 4 >= lastIndex}
       >
         {total}
       </Link>
