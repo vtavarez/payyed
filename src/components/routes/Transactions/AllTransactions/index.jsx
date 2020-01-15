@@ -4,7 +4,7 @@ import { Wrapper, Title } from "./styles"
 
 function AllTransactions() {
   // fake data set
-  const transactions = Array.from({ length: 200 })
+  const transactions = Array.from({ length: 50 })
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const numberOfTransactionsToShow = 7

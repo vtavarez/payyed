@@ -7,6 +7,7 @@ import {
   Signup,
   Dashboard,
   Transactions,
+  SendRequest,
   NotFound,
   Forbidden
 } from "components/routes"
@@ -22,6 +23,7 @@ function App() {
           <Landing path="/" />
           <Dashboard path="/dashboard" />
           <Transactions path="/transactions" />
+          <SendRequest path="/send-request-money" />
           <NotFound default />
         </Router>
       </Layout>
