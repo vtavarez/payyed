@@ -19,7 +19,7 @@ module.exports = {
     "jsx-a11y/label-has-associated-control": [ 1, {
       "labelComponents": ["TextInputLabel", "CheckboxInputLabel"],
       "labelAttributes": ["label"],
-      "controlComponents": ["TextInput", "CheckboxInput", "DateInput"],
+      "controlComponents": ["TextInput", "CheckboxInput", "DateInput", "FormGroupControl"],
       "depth": 3,
     }]
   }

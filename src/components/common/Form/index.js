@@ -15,6 +15,27 @@ export const FormName = styled.h3`
   margin-bottom: 1.5rem;
 `
 
+export const FormGroup = styled.div`
+  display: flex;
+  border-radius: 0.25rem;
+  border: 1px solid #dae1e3;
+  max-height: 52px;
+  margin-bottom: 1rem;
+`
+
+export const FormGroupPrepend = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  background-color: #f1f5f6;
+  border-right: 1px solid #dae1e3;
+  color: #656565;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+`
+
 export const Error = styled.span`
   display: block;
   color: #e74c3c
@@ -38,7 +59,7 @@ export const TextInputLabel = styled.label`
   width: 100%;
 `
 
-export const TextInput = styled.input.attrs({ type: "text" })`
+export const TextInput = styled.input`
   width: 100%;
   padding: 0.810rem 0.96rem;
   border: 1px solid #dae1e3;
@@ -161,4 +182,8 @@ export const StyledRadioInput = styled.div`
       background-image: url("${dot}");
     }
   }
+`
+export const FormGroupControl = styled(TextInput)`
+  border: none;
+  margin-bottom: 0;
 `
