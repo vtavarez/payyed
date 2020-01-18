@@ -29,6 +29,7 @@ const Global = createGlobalStyle`
   input[type=text] {
     line-height: 1.5;
     font-size: 1rem;
+    outline-color: #2dbe60;
   }
 `
 export default Global;

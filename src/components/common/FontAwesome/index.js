@@ -35,7 +35,8 @@ import {
   faComments,
   faEllipsisH,
   faBuilding,
-  faCalendarAlt
+  faCalendarAlt,
+  faSort
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -67,6 +68,7 @@ library.add(
   faSlidersH,
   faWallet,
   faFileDownload,
+  faSort,
   faEllipsisH,
   faBuilding,
   faFacebookF,

@@ -26,3 +26,8 @@ export const Form = styled.form`
   background-color: #ffffff;
 `
 
+export const ExchangeRate = styled.p`
+  color: #8e9a9d;
+  text-align: center;
+`
+

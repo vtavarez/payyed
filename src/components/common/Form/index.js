@@ -34,6 +34,16 @@ export const FormGroupPrepend = styled.div`
   color: #656565;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
+
+  `
+export const FormGroupAppend = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  background-color: #f1f5f6;
+  border-left: 1px solid #dae1e3;
 `
 
 export const Error = styled.span`
