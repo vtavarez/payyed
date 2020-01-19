@@ -33,3 +33,21 @@ export const Select = styled(ReactSelect)`
     white-space: nowrap;
   }
 `
+
+export const CurrencyFlag = styled.img`
+  display: inline-block;
+  margin-right: 0.4rem;
+  width: 25px;
+  transform: translateY(-2px);
+`
+
+export const OptionValue = styled.span`
+  color: ${({ isSelected }) => isSelected ? "#ffffff" : "#212529"};
+  font-size: 1rem;
+
+`
+
+export const OptionDescription = styled.small`
+  padding-left: 0.5rem;
+  color: #8e9a9d;
+`

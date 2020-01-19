@@ -4,15 +4,14 @@ import { Link, navigate } from "@reach/router"
 import { withFormik, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from "axios"
-import { Wrapper } from "./styles"
 import {
   Form,
   FormName,
   Error,
-  InputField,
-  TextInputLabel,
+  InputGroup,
+  Label,
   TextInput,
-  TextInputName,
+  InputName,
   CheckboxInputLabel,
   CheckboxInput,
   CheckboxInputName,
@@ -21,6 +20,7 @@ import {
   ButtonLink,
   ButtonPrimary
 } from "components/common"
+import { Wrapper } from "./styles"
 
 function LoginForm({
   values,
@@ -34,7 +34,6 @@ function LoginForm({
   const { state, dispatch } = useContext(State)
 
   useEffect(() => {
-    console.log(state.authenticated);
     if(state.authenticated){
       navigate("/dashboard")
     }
@@ -62,10 +61,13 @@ function LoginForm({
 
   return (
     <Wrapper>
+      
       <Form onSubmit={fetchUser}>
+
         <FormName>Log In</FormName>
-        <TextInputLabel label="email">
-          <TextInputName>Email Address</TextInputName>
+
+        <Label label="email">
+          <InputName>Email Address</InputName>
           <TextInput
             onChange={handleChange}
             onBlur={handleBlur}
@@ -75,9 +77,10 @@ function LoginForm({
             error={touched.email && errors.email}
           />
           <ErrorMessage component={Error} name="email" />
-        </TextInputLabel>
-        <TextInputLabel label="password">
-          <TextInputName>Password</TextInputName>
+        </Label>
+
+        <Label label="password">
+          <InputName>Password</InputName>
           <TextInput
             onChange={handleChange}
             onBlur={handleBlur}
@@ -87,8 +90,9 @@ function LoginForm({
             error={touched.password && errors.password}
           />
           <ErrorMessage component={Error} name="password" />
-        </TextInputLabel>
-        <InputField>
+        </Label>
+
+        <InputGroup>
           <CheckboxInputLabel label="rememberMe">
             <CheckboxInput
               onChange={() => setFieldValue("rememberMe", !values.rememberMe)}
@@ -102,17 +106,21 @@ function LoginForm({
           <ButtonLink href="#" fontSize="14px">
             Forgot Password?
           </ButtonLink>
-        </InputField>
+        </InputGroup>
+
         <ButtonPrimary stretch type="submit">
           Login
         </ButtonPrimary>
+
       </Form>
+
       <Account>
         Don't have an account?{" "}
         <ButtonLink as={Link} to="/signup">
           Sign Up
         </ButtonLink>
       </Account>
+
     </Wrapper>
   )
 }

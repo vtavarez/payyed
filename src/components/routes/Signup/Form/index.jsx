@@ -8,9 +8,9 @@ import {
   Form,
   FormName,
   Error,
-  TextInputLabel,
+  Label,
   TextInput,
-  TextInputName,
+  InputName,
   Account,
   ButtonLink,
   ButtonPrimary
@@ -26,10 +26,13 @@ function Signup({
 }) {
   return (
     <Wrapper>
+
       <Form onSubmit={handleSubmit}>
+
         <FormName>Sign Up</FormName>
-        <TextInputLabel label="name">
-          <TextInputName>Full Name</TextInputName>
+
+        <Label label="name">
+          <InputName>Full Name</InputName>
           <TextInput
             onChange={handleChange}
             onBlur={handleBlur}
@@ -40,9 +43,10 @@ function Signup({
             error={touched.name && errors.name}
           />
           <ErrorMessage component={Error} name="name" />
-        </TextInputLabel>
-        <TextInputLabel label="email">
-          <TextInputName>Email Address</TextInputName>
+        </Label>
+
+        <Label label="email">
+          <InputName>Email Address</InputName>
           <TextInput
             onChange={handleChange}
             onBlur={handleBlur}
@@ -53,9 +57,10 @@ function Signup({
             error={touched.email && errors.email}
           />
           <ErrorMessage component={Error} name="email" />
-        </TextInputLabel>
-        <TextInputLabel label="password">
-          <TextInputName>Password</TextInputName>
+        </Label>
+
+        <Label label="password">
+          <InputName>Password</InputName>
           <TextInput
             onChange={handleChange}
             onBlur={handleBlur}
@@ -66,17 +71,21 @@ function Signup({
             error={touched.password && errors.password}
           />
           <ErrorMessage component={Error} name="password" />
-        </TextInputLabel>
+        </Label>
+        
         <ButtonPrimary stretch margin="0.5rem 0" type="submit">
           Sign Up
         </ButtonPrimary>
+
       </Form>
+
       <Account>
         Already have an account?{" "}
         <ButtonLink as={Link} to="/login">
           Log In
         </ButtonLink>
       </Account>
+      
     </Wrapper>
   )
 }

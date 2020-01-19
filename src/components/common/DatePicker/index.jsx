@@ -1,16 +1,18 @@
-import React, { Fragment, useEffect } from "react"
+import React, { useEffect, useRef } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { TextInput } from "components/common"
 import $ from "jquery"
 import "daterangepicker"
 import "daterangepicker/daterangepicker.css"
 import "./styles.css"
 
 export function DatePicker(props) {
-  const { inputRef, children, onApply } = props
+  const inputRef = useRef()
 
   useEffect(() => {
-   let $picker = $(inputRef.current ?? inputRef)
+   let $picker = $(inputRef.current)
    $picker.daterangepicker({ ...props, applyButtonClasses: "drp-apply" })
-   $picker.on('apply.daterangepicker', onApply)
+   $picker.on('apply.daterangepicker', props.onApply)
    return () => {
      $picker = null;
    }
@@ -18,8 +20,11 @@ export function DatePicker(props) {
   },[])
 
   return (
-    <Fragment>
-      {children}
-    </Fragment>
+    <div className="date-picker__wrapper">
+      <TextInput ref={inputRef} type="text" name="daterange" />
+      <span className="date-picker__icon">
+        <FontAwesomeIcon icon="calendar-alt" size="1x" transform="grow-5" />
+      </span>
+    </div>
   )
 }

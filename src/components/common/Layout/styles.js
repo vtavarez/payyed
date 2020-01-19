@@ -26,10 +26,15 @@ const Global = createGlobalStyle`
 
   input[type=email],
   input[type=password],
-  input[type=text] {
+  input[type=text],
+  textarea {
     line-height: 1.5;
     font-size: 1rem;
     outline-color: #2dbe60;
+    
+    &::placeholder {
+      opacity: 0.5;
+    }
   }
 `
 export default Global;

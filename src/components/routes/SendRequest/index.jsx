@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react"
 import SendMoney from "./Send"
+import RequestMoney from "./Request"
 import {
   Header,
   Footer,
@@ -11,7 +12,7 @@ import {
 } from "components/common"
 
 export function SendRequest() {
-  const [tab, setTab] = useState("send")
+  const [tab, setTab] = useState("request")
 
   const onTabClicked = e => {
     e.preventDefault()
@@ -23,16 +24,17 @@ export function SendRequest() {
       <SEO title="Payyed - Send & Request Money" />
       <Header />
       <Tabs onClick={onTabClicked}>
-        <Tab label="send" active={tab === "send"}>
+        <Tab label="send" aria-label="send" active={tab === "send"}>
           Send
         </Tab>
-        <Tab label="request" active={tab === "request"}>
+        <Tab label="request" aria-label="request" active={tab === "request"}>
           Request
         </Tab>
       </Tabs>
-      <Wrapper bgColor="#f5f5f5">
+      <Wrapper bgColor="#f5f5f5" padding="2.5rem 0">
         <Contents>
           {tab === "send" && <SendMoney />}
+          {tab === "request" && <RequestMoney />}
         </Contents>
       </Wrapper>
       <Footer />

@@ -1,16 +1,27 @@
 import React, { Fragment } from "react"
-import CurrencySelect from "../CurrencySelect"
 import {
-  TextInputLabel,
+  Label,
   TextInput,
-  TextInputName as Name,
+  InputName,
   FormGroup,
   FormGroupControl,
   FormGroupPrepend,
   FormGroupAppend,
+  CurrencySelect,
   ButtonPrimary
 } from "components/common"
-import { Heading, SubHeading, Form, FormName, ExchangeRate } from "./styles"
+import {
+  Heading,
+  SubHeading,
+  Form,
+  FormName,
+  ExchangeRate,
+  Rate,
+  Divider,
+  TotalFees,
+  TotalToPay,
+  Fee
+} from "./styles"
 
 function SendMoney() {
   // fake data set
@@ -27,56 +38,67 @@ function SendMoney() {
       <SubHeading>
         Send your money anytime, anywhere around the globe.
       </SubHeading>
+
       <Form>
         <FormName>Personal Details</FormName>
-        <Name>Recipient</Name>
-        <TextInputLabel label="email">
+
+        <Label label="email">
+          <InputName>Recipient</InputName>
           <TextInput
             id="email"
             type="email"
             name="email"
             placeholder="Enter Email Address"
           />
-        </TextInputLabel>
-        <Name>You Send</Name>
-        <FormGroup>
-          <FormGroupPrepend>$</FormGroupPrepend>
-          <TextInputLabel label="send">
-            <FormGroupControl 
-              id="send" 
-              type="text" 
-              name="send" 
-            />
-          </TextInputLabel>
-          <FormGroupAppend>
-            <CurrencySelect
-              options={options}
-              classNamePrefix="currency-select"
-              defaultValue={options[0]}
-              isSearchable
-            />
-          </FormGroupAppend>
-        </FormGroup>
-        <Name>Recipient Gets</Name>
-        <FormGroup>
-          <FormGroupPrepend>$</FormGroupPrepend>
-          <TextInputLabel label="recipient">
-            <FormGroupControl 
-              id="recipient" 
-              type="text" 
-              name="recipient" 
-            />
-          </TextInputLabel>
-          <FormGroupAppend>
-            <CurrencySelect
-              options={options}
-              classNamePrefix="currency-select"
-              defaultValue={options[3]}
-              isSearchable
-            />
-          </FormGroupAppend>
-        </FormGroup>
-        <ExchangeRate>The current exchange rate is 1 USD = 18.677791 MXN</ExchangeRate>
+        </Label>
+
+        <Label label="send" nomargin>
+        <InputName>You Send</InputName>
+          <FormGroup>
+            <FormGroupPrepend>$</FormGroupPrepend>
+            <FormGroupControl id="send" type="text" name="send" />
+            <FormGroupAppend>
+              <Label label="currency" nomargin>
+                <CurrencySelect
+                  options={options}
+                  defaultValue={options[0]}
+                  isSearchable
+                />
+              </Label>
+            </FormGroupAppend>
+          </FormGroup>
+        </Label>
+
+        <Label label="recipient" nomargin>
+          <InputName>Recipient Gets</InputName>
+          <FormGroup>
+            <FormGroupPrepend>$</FormGroupPrepend>
+            <FormGroupControl id="recipient" type="text" name="recipient" />
+            <FormGroupAppend>
+              <Label label="currency" nomargin>
+                <CurrencySelect
+                  options={options}
+                  defaultValue={options[3]}
+                  isSearchable
+                />
+              </Label>
+            </FormGroupAppend>
+          </FormGroup>
+        </Label>
+
+        <ExchangeRate>
+          The current exchange rate is <Rate>1 USD = 18.677791 MXN</Rate>
+        </ExchangeRate>
+
+        <Divider />
+
+        <TotalFees>
+          Total fees <Fee>7.21 USD</Fee>
+        </TotalFees>
+        <TotalToPay>
+          Total To Pay <Fee>1,007.21 USD</Fee>
+        </TotalToPay>
+
         <ButtonPrimary stretch>Continue</ButtonPrimary>
       </Form>
     </Fragment>

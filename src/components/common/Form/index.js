@@ -9,41 +9,15 @@ export const Form = styled.form`
   padding-left: 15px;
 `
 
+export const Label = styled.label`
+  margin-bottom: ${({ nomargin }) => nomargin ? "0" : "1rem"};
+  width: 100%;
+`
+
 export const FormName = styled.h3`
   font-family: "rubikregular", sans-serif;
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
-`
-
-export const FormGroup = styled.div`
-  display: flex;
-  border-radius: 0.25rem;
-  border: 1px solid #dae1e3;
-  max-height: 52px;
-  margin-bottom: 1rem;
-`
-
-export const FormGroupPrepend = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-  background-color: #f1f5f6;
-  border-right: 1px solid #dae1e3;
-  color: #656565;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-
-  `
-export const FormGroupAppend = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  background-color: #f1f5f6;
-  border-left: 1px solid #dae1e3;
 `
 
 export const Error = styled.span`
@@ -52,21 +26,16 @@ export const Error = styled.span`
   margin-top: 0.5rem;
 `
 
-export const InputField = styled.div`
+export const InputGroup = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 1.5rem;
 `
 
-export const TextInputName = styled.span`
+export const InputName = styled.span`
   display: block;
   margin-bottom: 0.5rem;
-`
-
-export const TextInputLabel = styled.label`
-  margin-bottom: 1rem;
-  width: 100%;
 `
 
 export const TextInput = styled.input`
@@ -78,10 +47,17 @@ export const TextInput = styled.input`
   background-color: #ffffff;
   background-clip: padding-box;
   transition: border-color 0.15s ease-in-out;
+`
 
-  &::placeholder {
-    opacity: 0.5;
-  }
+export const TextArea  = styled.textarea`
+  width: 100%;
+  padding: 0.810rem 0.96rem;
+  border: 1px solid #dae1e3;
+  border-radius: 0.25rem;
+  color: #656565;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  transition: border-color 0.15s ease-in-out;
 `
 
 export const CheckboxInputName = styled.span``
@@ -193,6 +169,38 @@ export const StyledRadioInput = styled.div`
     }
   }
 `
+
+export const FormGroup = styled.div`
+  display: flex;
+  border-radius: 0.25rem;
+  border: 1px solid #dae1e3;
+  max-height: 52px;
+  margin-bottom: 1rem;
+`
+
+export const FormGroupPrepend = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  background-color: #f1f5f6;
+  border-right: 1px solid #dae1e3;
+  color: #656565;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+
+  `
+export const FormGroupAppend = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  background-color: #f1f5f6;
+  border-left: 1px solid #dae1e3;
+`
+
 export const FormGroupControl = styled(TextInput)`
   border: none;
   margin-bottom: 0;

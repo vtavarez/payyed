@@ -1,3 +1,21 @@
+.date-picker__wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px){
+    margin-right: -10px;
+    margin-bottom: 0;
+  }
+}
+
+.date-picker__icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #c4c3c3;
+}
+
 .daterangepicker {
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.176);
 }

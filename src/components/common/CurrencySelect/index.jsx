@@ -1,8 +1,7 @@
 import React from "react"
-import { Select } from "components/common"
 import { components } from "react-select"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { CurrencyFlag, OptionValue, OptionDescription } from "./styles"
+import { Select, CurrencyFlag, OptionValue, OptionDescription } from "./styles"
 import flags from "./flags"
 
 const theme = theme => ({
@@ -46,15 +45,14 @@ const Option = props => {
   )
 }
 
-function CurrencySelect(props) {
+export function CurrencySelect(props) {
   return (
     <Select
       {...props}
+      classNamePrefix="currency-select"
       placeholder={""}
       theme={theme}
       components={{ SingleValue, DropdownIndicator, Option }}
     />
   )
 }
-
-export default CurrencySelect

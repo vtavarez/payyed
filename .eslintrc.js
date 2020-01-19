@@ -16,11 +16,27 @@ module.exports = {
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/media-has-caption": 0,
-    "jsx-a11y/label-has-associated-control": [ 1, {
-      "labelComponents": ["TextInputLabel", "CheckboxInputLabel"],
-      "labelAttributes": ["label"],
-      "controlComponents": ["TextInput", "CheckboxInput", "DateInput", "FormGroupControl"],
-      "depth": 3,
-    }]
+    "jsx-a11y/label-has-associated-control": [
+      1,
+      {
+        labelComponents: [
+          "Label",
+          "CheckboxInputLabel",
+          "RadioInputLabel",
+        ],
+        labelAttributes: ["label"],
+        controlComponents: [
+          "TextInput",
+          "CheckboxInput",
+          "DatePicker",
+          "RadioInput",
+          "TextArea",
+          "CountrySelect",
+          "CurrencySelect",
+          "FormGroupControl"
+        ],
+        depth: 3
+      }
+    ]
   }
 }
