@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react"
-import SendMoney from "./Send"
-import RequestMoney from "./Request"
+import SendMoney from "./SendMoney"
+import RequestMoney from "./RequestMoney"
 import {
   Header,
   Footer,

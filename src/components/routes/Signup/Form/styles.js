@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   padding: 3rem 0 0;
   width: 100%;
   height: 100%;
-  background-color: #f5f5f5
+  background-color: #f5f5f5;
   
   @media (min-width: 768px){
     width: 50%;

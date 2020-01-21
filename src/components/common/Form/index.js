@@ -22,7 +22,7 @@ export const FormName = styled.h3`
 
 export const Error = styled.span`
   display: block;
-  color: #e74c3c
+  color: #e74c3c;
   margin-top: 0.5rem;
 `
 
@@ -43,6 +43,7 @@ export const TextInput = styled.input`
   padding: 0.810rem 0.96rem;
   border: 1px solid #dae1e3;
   border-radius: 0.25rem;
+  font-size: 1rem;
   color: #656565;
   background-color: #ffffff;
   background-clip: padding-box;
