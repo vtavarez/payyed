@@ -1,15 +1,16 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState, useContext } from "react"
+import { State } from "state"
 import Send from "./Send"
 import Confirm from "./Confirm"
 import Success from "./Success"
 
 function SendMoney() {
-  const [step, setStep] = useState({ userDetails: {}, current: "send" })
+  const [{ step, details }, setStep] = useState({ step: "confirm", details: {} })
   return (
     <Fragment>
-     {step.current === "send" && <Send setStep={setStep} />}
-     {step.current === "confirm" && <Confirm setStep={setStep} />}
-     {step.current === "success" && <Success setStep={setStep} />}
+     {step === "send" && <Send setStep={setStep} />}
+     {step === "confirm" && <Confirm details={details} />}
+     {step === "success" && <Success />}
     </Fragment>
   )
 }

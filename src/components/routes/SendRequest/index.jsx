@@ -12,7 +12,7 @@ import {
 } from "components/common"
 
 export function SendRequest() {
-  const [tab, setTab] = useState("request")
+  const [tab, setTab] = useState("send")
 
   const onTabClicked = e => {
     e.preventDefault()

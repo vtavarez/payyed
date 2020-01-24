@@ -79,8 +79,12 @@ export const Wrapper = styled.div`
     align-items: ${({ align }) => `${align}`};
     margin-left: ${({ align }) => align === "start" && "100px"};
   }
+
+  @media (min-width: 1200px){
+    margin-left: ${({ align }) => align === "start" && "300px"};
+  }
   
-  @media (min-width: 1900px){
+  @media (min-width: 2500px){
     margin-left: ${({ align }) => align === "start" && "600px"};
   }
   `

@@ -89,7 +89,7 @@ function Send({ setStep }) {
           })
         }
         onSubmit={(values, { setSubmitting }) => {
-          setStep({ userDetails: { ...values }, current: "confirm" })
+          setStep({ step: "confirm", details: { ...values } })
           setSubmitting(false)
         }}
       >
