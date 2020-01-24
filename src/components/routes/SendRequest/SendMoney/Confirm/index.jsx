@@ -28,7 +28,7 @@ function Confirm({ email }) {
     <Fragment>
       <Heading>Send Money</Heading>
       <SubHeading>
-        You are sending money to <Email>demo@gmail.com</Email>
+        You are sending money to <Email>user@gmail.com</Email>
       </SubHeading>
       <Formik
         initialValues={{
