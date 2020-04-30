@@ -14,7 +14,7 @@
     "daterangepicker": "^3.0.5",
     "focus-trap-react": "^6.0.0",
     "formik": "^2.1.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsrsasign": "^8.0.12",
     "moment": "^2.24.0",
     "react": "^16.12.0",
