@@ -5,7 +5,7 @@ import Confirm from "./Confirm"
 import Success from "./Success"
 
 function SendMoney() {
-  const [{ step, details }, setStep] = useState({ step: "confirm", details: {} })
+  const [{ step, details }, setStep] = useState({ step: "send", details: {} })
   return (
     <Fragment>
      {step === "send" && <Send setStep={setStep} />}
