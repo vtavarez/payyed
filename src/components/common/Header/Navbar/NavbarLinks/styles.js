@@ -12,7 +12,7 @@ export const NavLink = styled.a`
     text-decoration: none;
     color: #2dbe60;
   }
-
+  
   ${({ pathname, to }) =>
     pathname === to &&
     `

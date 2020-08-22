@@ -147,14 +147,13 @@ export const StyledRadioInput = styled.div`
     content: "";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     width: 1rem;
     height: 1rem;
     background-repeat: no-repeat;
-    background-position: center;
     background-size: 40%;
-    transform: translate(-1.5px, -1.5px);
+    transform: translate(-3px, -3px);
   }
 
   ${RadioInput}:focus + & {
