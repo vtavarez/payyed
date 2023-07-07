@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react"
-import { Formik, ErrorMessage } from "formik"
-import * as Yup from "yup"
-import axios from "axios"
-import { openExchangeId } from "data/keys"
+import React, { Fragment, useEffect, useState } from "react";
+import { Formik, ErrorMessage } from "formik";
+import { openExchangeId } from "data/keys";
+import * as Yup from "yup";
+import axios from "axios";
 import {
   Label,
   Error,
@@ -13,8 +13,8 @@ import {
   FormGroupPrepend,
   FormGroupAppend,
   CurrencySelect,
-  ButtonPrimary
-} from "components/common"
+  ButtonPrimary,
+} from "components/common";
 import {
   Heading,
   SubHeading,
@@ -25,8 +25,8 @@ import {
   Divider,
   TotalFees,
   TotalToPay,
-  Fee
-} from "./styles"
+  Fee,
+} from "./styles";
 
 function Send({ setStep }) {
   // fake data set
@@ -34,34 +34,36 @@ function Send({ setStep }) {
     { value: "usd", label: "USD", description: "United States dollar" },
     { value: "cad", label: "CAD", description: "Canadian dollar" },
     { value: "gbp", label: "GBP", description: "British pound" },
-    { value: "mxn", label: "MXN", description: "Mexican peso" }
-  ]
+    { value: "mxn", label: "MXN", description: "Mexican peso" },
+  ];
 
-  const [exchangeRate, setExchangeRate] = useState("")
-  const [sendCurrency, setSendCurrency] = useState(options[0].value)
-  const [recipientCurrency, setRecipientCurrency] = useState(options[3].value)
+  const [exchangeRates, setExchangeRates] = useState(0);
+  const [senderCurrency, setSenderCurrency] = useState(options[0].value);
+  const [recipientCurrency, setRecipientCurrency] = useState(options[1].value);
 
   useEffect(() => {
     const fetchData = async () => {
       const {
-        data: { rates }
+        data: { rates },
       } = await axios.get(`	https://openexchangerates.org/api/latest.json`, {
         params: {
           app_id: openExchangeId,
-          base: sendCurrency,
-          symbols: recipientCurrency,
+          base: senderCurrency,
+          symbols: `${senderCurrency},${recipientCurrency}`,
           prettyprint: true,
-          show_alternative: false
-        }
-      })
-      setExchangeRate(rates[recipientCurrency.toUpperCase()])
-    }
-    fetchData()
-  }, [sendCurrency, recipientCurrency])
+          show_alternative: false,
+        },
+      });
+      setExchangeRates(rates);
+    };
+    fetchData();
+  }, [senderCurrency, recipientCurrency]);
 
-  const onSendCurrencyChange = option => setSendCurrency(option.value)
-
-  const onRecipientCurrencyChange = option => setRecipientCurrency(option.value)
+  const onSendCurrencyChange = (option) => setSenderCurrency(option.value);
+  const onRecipientCurrencyChange = (option) =>
+    setRecipientCurrency(option.value);
+  const exchangeRate = (currency) => exchangeRates[currency.toUpperCase()];
+  const getFee = (amount) => amount * 0.01;
 
   return (
     <Fragment>
@@ -73,32 +75,40 @@ function Send({ setStep }) {
       <Formik
         initialValues={{
           email: "",
-          send: 10.0,
-          recipient: 0,
-          sendCurrency: options[0],
-          recipientCurrency: options[3]
+          senderAmount: 10.0,
+          senderCurrency: options[0],
+          recipientCurrency: options[1],
         }}
         validationSchema={() =>
           Yup.object().shape({
             email: Yup.string()
               .email()
               .required("A recipient email address is required"),
-            send: Yup.number()
-              .min(10, "A minimum amount of $10 is required")
-              .required("A send amount is required")
+            senderAmount: Yup.number()
+              .min(
+                (exchangeRate(senderCurrency) * 10.0).toFixed(2),
+                `A minimum amount of $${(
+                  exchangeRate(senderCurrency) * 10.0
+                ).toFixed(2)} ${senderCurrency.toUpperCase()} is required`
+              )
+              .required("A send amount is required"),
           })
         }
-        onSubmit={(values, { setSubmitting }) => {
-          setStep({ step: "confirm", details: { ...values } })
-          setSubmitting(false)
+        onSubmit={({ email, senderAmount }, { setSubmitting }) => {
+          setSubmitting(true)
+          setStep({
+            step: "confirm",
+            payload: {
+              email,
+              senderAmount: senderAmount.toFixed(2),
+              fee: getFee(senderAmount).toFixed(2),
+              senderCurrency: senderCurrency.toUpperCase(),
+              total: (senderAmount + getFee(senderAmount)).toFixed(2),
+            },
+          });
         }}
       >
-        {({
-          handleBlur,
-          handleChange,
-          handleSubmit,
-          values
-        }) => (
+        {({ handleBlur, handleChange, handleSubmit, values }) => (
           <Form onSubmit={handleSubmit}>
             <FormName>Personal Details</FormName>
 
@@ -116,40 +126,41 @@ function Send({ setStep }) {
               <ErrorMessage component={Error} name="email" />
             </Label>
 
-            <Label label="send" nomargin>
+            <Label label="sender-amount" nomargin>
               <InputName>You Send</InputName>
               <FormGroup>
                 <FormGroupPrepend>$</FormGroupPrepend>
                 <FormGroupControl
-                  id="send"
+                  id="sender-amount"
                   type="number"
                   step="0.01"
                   min="10"
-                  name="send"
+                  name="senderAmount"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.send}
+                  value={values.senderAmount}
                 />
                 <FormGroupAppend>
                   <Label
-                    label="currency"
+                    label="sender-currency"
                     aria-label="select the currency you would like to send"
                     nomargin
                   >
                     <CurrencySelect
+                      id="sender-currency"
                       options={options}
-                      defaultValue={values.sendCurrency}
+                      defaultValue={values.senderCurrency}
                       onChange={onSendCurrencyChange}
                       isSearchable
                     />
                   </Label>
                 </FormGroupAppend>
               </FormGroup>
-              <ErrorMessage component={Error} name="send" />
+              <ErrorMessage component={Error} name="senderAmount" />
             </Label>
 
             <Label
-              label="recipient"
+              label="recipient-amount"
               aria-label="select the currency you would like the recipient to receive"
               nomargin
             >
@@ -157,15 +168,20 @@ function Send({ setStep }) {
               <FormGroup>
                 <FormGroupPrepend>$</FormGroupPrepend>
                 <FormGroupControl
-                  id="recipient"
+                  id="recipient-amount"
                   type="number"
-                  name="recipient"
-                  value={values.send * exchangeRate}
+                  name="recipientAmount"
+                  value={
+                    Number(
+                      values.senderAmount * exchangeRate(recipientCurrency)
+                    ).toFixed(2)
+                  }
                   readOnly
                 />
                 <FormGroupAppend>
-                  <Label label="currency" nomargin>
+                  <Label label="recipient-currency" nomargin>
                     <CurrencySelect
+                      id="recipient-currency"
                       options={options}
                       defaultValue={values.recipientCurrency}
                       onChange={onRecipientCurrencyChange}
@@ -174,12 +190,14 @@ function Send({ setStep }) {
                   </Label>
                 </FormGroupAppend>
               </FormGroup>
+              <ErrorMessage component={Error} name="recipientAmount" />
             </Label>
 
             <ExchangeRate>
               The current exchange rate is{" "}
               <Rate>
-                1 {sendCurrency.toUpperCase()} = {exchangeRate}{" "}
+                1 {senderCurrency.toUpperCase()} ={" "}
+                {exchangeRate(recipientCurrency)}{" "}
                 {recipientCurrency.toUpperCase()}
               </Rate>
             </ExchangeRate>
@@ -189,15 +207,17 @@ function Send({ setStep }) {
             <TotalFees>
               Total fees{" "}
               <Fee>
-                {Number(values.send * 0.01).toFixed(2)}{" "}
-                {sendCurrency.toUpperCase()}
+                {getFee(values.senderAmount).toFixed(2)}{" "}
+                {senderCurrency.toUpperCase()}
               </Fee>
             </TotalFees>
             <TotalToPay>
               Total To Pay{" "}
               <Fee>
-                {Number(values.send + values.send * 0.01).toFixed(2)}{" "}
-                {sendCurrency.toUpperCase()}
+                {Number(
+                  values.senderAmount + getFee(values.senderAmount)
+                ).toFixed(2)}{" "}
+                {senderCurrency.toUpperCase()}
               </Fee>
             </TotalToPay>
 
@@ -208,7 +228,7 @@ function Send({ setStep }) {
         )}
       </Formik>
     </Fragment>
-  )
+  );
 }
 
-export default Send
+export default Send;

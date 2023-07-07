@@ -23,12 +23,12 @@ import {
   TotalAmount
 } from "./styles";
 
-function Confirm({ email }) {
+function Confirm({ setStep, payload: { email, fee, senderCurrency, senderAmount, total } }) {
   return (
     <Fragment>
       <Heading>Send Money</Heading>
       <SubHeading>
-        You are sending money to <Email>user@gmail.com</Email>
+        You are sending money to <Email>{ email }</Email>
       </SubHeading>
       <Formik
         initialValues={{
@@ -45,7 +45,10 @@ function Confirm({ email }) {
               .required("A payment description is required")
           })
         }
-        onSubmit={() => {}}
+        onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(true);
+          setStep({ step: "success", payload: { ...values } });
+        }}
       >
         {({ handleSubmit, handleChange, handleBlur, values }) => (
           <Form onSubmit={handleSubmit}>
@@ -64,16 +67,16 @@ function Confirm({ email }) {
             </Label>
             <FormName>Details</FormName>
             <SendAmount>
-              Send Amount <Amount>1,000.00 USD</Amount>
+              Send Amount <Amount>{senderAmount}{" "}{senderCurrency}</Amount>
             </SendAmount>
             <TotalFees>
-              Total Fees <Fees>7.21 USD</Fees>
+              Total Fees <Fees>{fee}{" "}{senderCurrency}</Fees>
             </TotalFees>
             <Divider />
             <Total>
-              Total <TotalAmount>1,007.21 USD</TotalAmount>
+              Total <TotalAmount>{total}{" "}{senderCurrency}</TotalAmount>
             </Total>
-            <ButtonPrimary stretch>Send Money</ButtonPrimary>
+            <ButtonPrimary stretch type="submit">Send Money</ButtonPrimary>
           </Form>
         )}
       </Formik>
