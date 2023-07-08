@@ -15,3 +15,17 @@ export const Card = styled.div`
     min-width: 263px;
   }
 `
+
+export const CardSuccess = styled(Card)`
+    width: 100%;
+    margin-inline: auto;
+    padding: 1rem;
+
+    @media (min-width: 768px) {
+      padding: 1.5rem 3rem 3rem 3rem;
+      max-width: 540px;
+    }
+    @media (min-width: 1200px) {
+      max-width: 630px;
+    }
+`

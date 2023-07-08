@@ -36,7 +36,7 @@ export const BannerContents = styled.div`
 `
 
 export const BannerTransactionName = styled.h3`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   font-size: 1.125rem;
   color: #ffffff;
   margin-top: 1rem;
@@ -66,7 +66,7 @@ export const Details = styled.div`
 `
 
 export const Title = styled.h5`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   font-size: 1.3125rem;
   margin: 1rem;
 `
@@ -120,7 +120,7 @@ export const List = styled.ul`
 `
 
 export const Item = styled.li`
-  font-family: ${({ medium }) => medium ? "rubikmedium" : "rubikregular"}, sans-serif;
+  font-family: ${({ medium }) => medium ? "rubikmedium" : "rubik"}, sans-serif;
   margin-bottom: ${({ mb }) => mb ? mb : "0"};
   color ${({ color }) => color ? color : "inherit"};
 `

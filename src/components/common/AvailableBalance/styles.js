@@ -19,7 +19,7 @@ export const Icon = styled.div`
 `
 
 export const Balance = styled.h3`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   margin-bottom: 0.4rem;
   font-size: 2.25rem;
 `

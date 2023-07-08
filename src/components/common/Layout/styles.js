@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from "styled-components"
 
 const Global = createGlobalStyle`
   body {
-    font-family: "rubikregular","rubiklight","rubikitalic","rubikbold_italic", "rubikbold","rubikblack","rubikmedium", sans-serif;
+    font-family: "rubik","rubiklight","rubikitalic","rubikbold_italic", "rubikbold","rubikblack","rubikmedium", sans-serif;
     font-size: 14px;
     line-height: 22px;
     color: #4c4d4d;
@@ -15,7 +15,7 @@ const Global = createGlobalStyle`
   }
   
   p {
-    font-family: "rubikregular", sans-serif;
+    font-family: "rubik", sans-serif;
     line-height: 1.9;
   }
 

@@ -1,11 +1,13 @@
 import styled from "styled-components"
 
 export const NavLink = styled.a`
-  font-family: "rubikmedium", sans-serif;
+  font-family: "rubik", sans-serif;
   font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
   color: #4c4d4d;
   padding: 0 0.85em;
+  transition: all 0.5s ease;
 
   &:hover,
   &:focus {

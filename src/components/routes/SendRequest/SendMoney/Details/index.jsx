@@ -28,7 +28,7 @@ import {
   Fee,
 } from "./styles";
 
-function Send({ setStep }) {
+function Details({ setStep }) {
   // fake data set
   const options = [
     { value: "usd", label: "USD", description: "United States dollar" },
@@ -60,8 +60,7 @@ function Send({ setStep }) {
   }, [senderCurrency, recipientCurrency]);
 
   const onSendCurrencyChange = (option) => setSenderCurrency(option.value);
-  const onRecipientCurrencyChange = (option) =>
-    setRecipientCurrency(option.value);
+  const onRecipientCurrencyChange = (option) => setRecipientCurrency(option.value);
   const exchangeRate = (currency) => exchangeRates[currency.toUpperCase()];
   const getFee = (amount) => amount * 0.01;
 
@@ -231,4 +230,4 @@ function Send({ setStep }) {
   );
 }
 
-export default Send;
+export default Details;

@@ -7,6 +7,7 @@ export const Wrapper = styled.a.attrs({ href: "#" })`
   color: ${({ active }) => active ? "#ffffff" : "rgba(250, 250, 250, 0.9)"};
   background-color: ${({ active }) => active ? "rgba(0, 0, 0, 0.1)" : "transparent"};
   font-size: 1rem;
+  font-weight: 500;
   min-width: 78px;
   padding: 1rem 20px;
 

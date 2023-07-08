@@ -27,7 +27,7 @@ export const Month = styled.span`
 `
 
 export const TransactionName = styled.span`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   font-size: 1.125rem;
   display: block;
 `

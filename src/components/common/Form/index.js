@@ -15,7 +15,7 @@ export const Label = styled.label`
 `
 
 export const FormName = styled.h3`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
 `

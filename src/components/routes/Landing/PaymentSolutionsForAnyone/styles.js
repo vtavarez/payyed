@@ -79,7 +79,7 @@ export const Card = styled.div`
     bottom: 0;
     background: rgba(0,0,0,0.5);
     color: #ffffff;
-    font-family: 'rubikregular' sans-serif;
+    font-family: 'rubik' sans-serif;
     font-size: 1.3125rem;
     text-align: center;
     border-radius: 0 0 0.25rem 0.25rem;

@@ -20,7 +20,7 @@ export const Icon = styled.div`
 `
 
 export const Heading = styled.h3`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   font-size: 1rem;

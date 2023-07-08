@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const Button = styled.button`
+  font-family: "rubik", sans-serif;
+  font-weight: 680;
   background-color: transparent;
   color: #212529;
   transition: all 0.5s ease;
@@ -116,7 +118,7 @@ export const ButtonTooltip = styled.button`
   color: #4d555a;
 
   &::before {
-    font-family: "rubikregular", sans-serif;
+    font-family: "rubik", sans-serif;
     content: '${({ tooltip }) => tooltip}';
     position: absolute;
     max-width: 200px;

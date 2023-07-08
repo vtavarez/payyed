@@ -36,7 +36,8 @@ import {
   faEllipsisH,
   faBuilding,
   faCalendarAlt,
-  faSort
+  faSort,
+  faPrint
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -74,5 +75,6 @@ library.add(
   faFacebookF,
   faTwitter,
   faGoogle,
-  faYoutube
+  faYoutube,
+  faPrint
 )

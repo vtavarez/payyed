@@ -40,17 +40,20 @@
 }
 @font-face {
     font-family: 'rubikmedium';
-    src: url('./fonts/rubik-medium-webfont.woff2') format('woff2'),
+    src: url('./fonts/rubik-medium.ttf') format('tryetype'),
+         url('./fonts/rubik-medium-webfont.woff2') format('woff2'),
          url('./fonts/rubik-medium-webfont.woff') format('woff');
     font-weight: medium;
     font-style: normal;
 
 }
 @font-face {
-    font-family: 'rubikregular';
-    src: url('./fonts/rubik-regular-webfont.woff2') format('woff2'),
+    font-family: 'rubik';
+    src: url('./fonts/rubik-vf.ttf') format('truetype'),
+         url('./fonts/rubik-regular-webfont.woff2') format('woff2'),
          url('./fonts/rubik-regular-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
     font-style: normal;
 
 }

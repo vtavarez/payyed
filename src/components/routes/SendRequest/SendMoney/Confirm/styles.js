@@ -1,8 +1,9 @@
 import styled from "styled-components"
 
 export const Heading = styled.h2`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   text-align: center;
+  letter-spacing: -1px;
 `
 
 export const SubHeading = styled.p`
@@ -25,7 +26,7 @@ export const Form = styled.form`
 `
 
 export const FormName = styled.h3`
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   font-size: 1.3125rem;
   margin-bottom: 1rem;
 `

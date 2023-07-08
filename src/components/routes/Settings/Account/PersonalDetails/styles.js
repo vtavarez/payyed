@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Heading = styled.h3`
-  font-family: "rubikregular";
+  font-family: "rubik";
   font-size: 1.3125rem;
   text-transform: capitalize;
   align-self: flex-start;

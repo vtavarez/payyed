@@ -47,7 +47,7 @@ function Confirm({ setStep, payload: { email, fee, senderCurrency, senderAmount,
         }
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          setStep({ step: "success", payload: { ...values } });
+          setStep({ step: "success", payload: { email, total, ...values } });
         }}
       >
         {({ handleSubmit, handleChange, handleBlur, values }) => (

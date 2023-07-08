@@ -21,7 +21,7 @@ export function SEO({
   description = defaultDescription,
   location = ""
 }) {
-  const structuredDataOrganization = `{ 
+  const structuredDataOrganization = `{
 		"@context": "http://schema.org",
 		"@type": "Organization",
 		"legalName": "${legalName}",
@@ -51,7 +51,7 @@ export function SEO({
 			"${socialLinks.google}",
 			"${socialLinks.youtube}"
 		]
-  	}`
+  }`
   return (
     <Helmet>
       <meta name="theme-color" content={themeColor} />

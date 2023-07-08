@@ -24,7 +24,7 @@ export const Icon = styled.button`
   color: #4d555a;
 
   &::before {
-    font-family: "rubikregular", sans-serif;
+    font-family: "rubik", sans-serif;
     content: '${({ tooltip }) => tooltip}';
     position: absolute;
     max-width: 200px;

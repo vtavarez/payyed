@@ -120,7 +120,7 @@ export const EditProfile = styled.button`
   line-height: 1.9;
 
   &::before {
-    font-family: "rubikregular", sans-serif;
+    font-family: "rubik", sans-serif;
     content: 'Edit Profile';
     position: absolute;
     width: 90px;

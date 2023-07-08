@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h3`
   display: flex;
   align-items: center;
-  font-family: "rubikregular", sans-serif;
+  font-family: "rubik", sans-serif;
   font-size: 1.3125rem;
   margin-bottom: 1rem;
 `
