@@ -6,7 +6,7 @@ import {
   InputName,
   Error,
   TextArea,
-  ButtonPrimary
+  ButtonPrimary,
 } from "components/common";
 import {
   Heading,
@@ -20,19 +20,20 @@ import {
   Fees,
   Divider,
   Total,
-  TotalAmount
+  TotalAmount,
 } from "./styles";
 
-function Confirm({ setStep, payload: { email, fee, senderCurrency, senderAmount, total } }) {
+function Confirm({ state, dispatch }) {
+  const { email, fee, senderCurrency, senderAmount, total } = state.confirm.payload;
   return (
     <Fragment>
       <Heading>Send Money</Heading>
       <SubHeading>
-        You are sending money to <Email>{ email }</Email>
+        You are sending money to <Email>{email}</Email>
       </SubHeading>
       <Formik
         initialValues={{
-          description: ""
+          description: "",
         }}
         validationSchema={() =>
           Yup.object().shape({
@@ -42,12 +43,19 @@ function Confirm({ setStep, payload: { email, fee, senderCurrency, senderAmount,
                 /[a-zA-Z0-9!.,?;:@#&*%$]$/,
                 "Description cannot include any special characters, or start with a space"
               )
-              .required("A payment description is required")
+              .required("A payment description is required"),
           })
         }
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          setStep({ step: "success", payload: { email, total, ...values } });
+          dispatch({
+            type: "success",
+            payload: {
+              email, 
+              total, 
+              ...values 
+            }
+          })
         }}
       >
         {({ handleSubmit, handleChange, handleBlur, values }) => (
@@ -67,16 +75,27 @@ function Confirm({ setStep, payload: { email, fee, senderCurrency, senderAmount,
             </Label>
             <FormName>Details</FormName>
             <SendAmount>
-              Send Amount <Amount>{senderAmount}{" "}{senderCurrency}</Amount>
+              Send Amount{" "}
+              <Amount>
+                {senderAmount} {senderCurrency}
+              </Amount>
             </SendAmount>
             <TotalFees>
-              Total Fees <Fees>{fee}{" "}{senderCurrency}</Fees>
+              Total Fees{" "}
+              <Fees>
+                {fee} {senderCurrency}
+              </Fees>
             </TotalFees>
             <Divider />
             <Total>
-              Total <TotalAmount>{total}{" "}{senderCurrency}</TotalAmount>
+              Total{" "}
+              <TotalAmount>
+                {total} {senderCurrency}
+              </TotalAmount>
             </Total>
-            <ButtonPrimary stretch type="submit">Send Money</ButtonPrimary>
+            <ButtonPrimary stretch type="submit">
+              Send Money
+            </ButtonPrimary>
           </Form>
         )}
       </Formik>

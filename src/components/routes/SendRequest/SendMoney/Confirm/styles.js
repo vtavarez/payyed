@@ -4,6 +4,13 @@ export const Heading = styled.h2`
   font-family: "rubik", sans-serif;
   text-align: center;
   letter-spacing: -1px;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 450;
+  margin-bottom: 1.5rem;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 export const SubHeading = styled.p`

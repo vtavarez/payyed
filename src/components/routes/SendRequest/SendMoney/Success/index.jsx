@@ -11,10 +11,11 @@ import {
   CheckIcon,
   Print,
   PrintIcon,
-	ActiveLink
+  ActiveLink,
 } from "./styles";
 
-function Success({ setStep, payload: { email, total } }) {
+function Success({ state, dispatch }) {
+  const { email, total } = state.confirm.payload;
   return (
     <Fragment>
       <Heading>Send Money</Heading>
@@ -25,15 +26,18 @@ function Success({ setStep, payload: { email, total } }) {
         <Text>
           You've Successfully sent <Highlight>${total}</Highlight> to{" "}
           <Highlight>{email}</Highlight>, See transaction details under{" "}
-					<Link to="/dashboard"><ActiveLink>Activity</ActiveLink></Link>.
+          <Link to="/dashboard">
+            <ActiveLink>Activity</ActiveLink>
+          </Link>
+          .
         </Text>
-        <ButtonPrimary onClick={(e) => setStep({ step: "send", payload: {} })}>
+        <ButtonPrimary onClick={(e) => dispatch({ type: "reset"})}>
           Send Money Again
         </ButtonPrimary>
-          <Print>
-            <PrintIcon as={FontAwesomeIcon} icon="print" />
-            Print
-          </Print>
+        <Print>
+          <PrintIcon as={FontAwesomeIcon} icon="print" />
+          Print
+        </Print>
       </CardSuccess>
     </Fragment>
   );

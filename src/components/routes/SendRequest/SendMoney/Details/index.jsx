@@ -26,9 +26,10 @@ import {
   TotalFees,
   TotalToPay,
   Fee,
+  Amount
 } from "./styles";
 
-function Details({ setStep }) {
+function Details({ state, dispatch }) {
   // fake data set
   const options = [
     { value: "usd", label: "USD", description: "United States dollar" },
@@ -95,21 +96,23 @@ function Details({ setStep }) {
         }
         onSubmit={({ email, senderAmount }, { setSubmitting }) => {
           setSubmitting(true)
-          setStep({
-            step: "confirm",
-            payload: {
-              email,
-              senderAmount: senderAmount.toFixed(2),
-              fee: getFee(senderAmount).toFixed(2),
-              senderCurrency: senderCurrency.toUpperCase(),
-              total: (senderAmount + getFee(senderAmount)).toFixed(2),
-            },
-          });
+          dispatch({
+              type: "confirm",
+              payload: {
+                email,
+                senderAmount: senderAmount.toFixed(2),
+                fee: getFee(senderAmount).toFixed(2),
+                senderCurrency: senderCurrency.toUpperCase(),
+                total: (senderAmount + getFee(senderAmount)).toFixed(2),
+            }
+          })
         }}
       >
         {({ handleBlur, handleChange, handleSubmit, values }) => (
           <Form onSubmit={handleSubmit}>
             <FormName>Personal Details</FormName>
+
+            <Divider stretch />
 
             <Label label="email">
               <InputName>Recipient</InputName>
@@ -210,14 +213,17 @@ function Details({ setStep }) {
                 {senderCurrency.toUpperCase()}
               </Fee>
             </TotalFees>
+
+            <Divider />
+
             <TotalToPay>
               Total To Pay{" "}
-              <Fee>
+              <Amount>
                 {Number(
                   values.senderAmount + getFee(values.senderAmount)
                 ).toFixed(2)}{" "}
                 {senderCurrency.toUpperCase()}
-              </Fee>
+              </Amount>
             </TotalToPay>
 
             <ButtonPrimary stretch type="submit">
