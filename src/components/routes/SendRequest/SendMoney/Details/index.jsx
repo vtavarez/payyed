@@ -29,13 +29,13 @@ import {
   Amount
 } from "./styles";
 
-function Details({ state, dispatch }) {
+function Details({ dispatch }) {
   // fake data set
   const options = [
-    { value: "usd", label: "USD", description: "United States dollar" },
-    { value: "cad", label: "CAD", description: "Canadian dollar" },
-    { value: "gbp", label: "GBP", description: "British pound" },
-    { value: "mxn", label: "MXN", description: "Mexican peso" },
+    { value: "usd", label: "USD", locale: "en-US", description: "United States dollar" },
+    { value: "cad", label: "CAD", locale: "en-CA", description: "Canadian dollar" },
+    { value: "gbp", label: "GBP", locale: "en-GB", description: "British pound" },
+    { value: "mxn", label: "MXN", locale: "es-MX", description: "Mexican peso" },
   ];
 
   const [exchangeRates, setExchangeRates] = useState(0);
@@ -43,31 +43,35 @@ function Details({ state, dispatch }) {
   const [recipientCurrency, setRecipientCurrency] = useState(options[1].value);
 
   useEffect(() => {
+	const params = {
+		params: {
+			app_id: openExchangeId,
+			base: senderCurrency,
+			symbols: `${senderCurrency},${recipientCurrency}`,
+			prettyprint: true,
+			show_alternative: false,
+		},
+  	}
+
     const fetchData = async () => {
-      const {
-        data: { rates },
-      } = await axios.get(`	https://openexchangerates.org/api/latest.json`, {
-        params: {
-          app_id: openExchangeId,
-          base: senderCurrency,
-          symbols: `${senderCurrency},${recipientCurrency}`,
-          prettyprint: true,
-          show_alternative: false,
-        },
-      });
-      setExchangeRates(rates);
-    };
-    fetchData();
-  }, [senderCurrency, recipientCurrency]);
+		const {data:{ rates }} = await axios.get(`https://openexchangerates.org/api/latest.json`, params);
+      	setExchangeRates(rates);
+    }
+
+    fetchData()
+
+  },[senderCurrency, recipientCurrency])
 
   const onSendCurrencyChange = (option) => setSenderCurrency(option.value);
   const onRecipientCurrencyChange = (option) => setRecipientCurrency(option.value);
   const exchangeRate = (currency) => exchangeRates[currency.toUpperCase()];
   const getFee = (amount) => amount * 0.01;
+  const parseAmount = (amount) => Number(amount.replace(/,/g, ""));
 
   return (
     <Fragment>
       <Heading>Send Money</Heading>
+
       <SubHeading>
         Send your money anytime, anywhere around the globe.
       </SubHeading>
@@ -75,7 +79,7 @@ function Details({ state, dispatch }) {
       <Formik
         initialValues={{
           email: "",
-          senderAmount: 10.0,
+          senderAmount: "1,000.00",
           senderCurrency: options[0],
           recipientCurrency: options[1],
         }}
@@ -84,28 +88,26 @@ function Details({ state, dispatch }) {
             email: Yup.string()
               .email()
               .required("A recipient email address is required"),
-            senderAmount: Yup.number()
-              .min(
-                (exchangeRate(senderCurrency) * 10.0).toFixed(2),
-                `A minimum amount of $${(
-                  exchangeRate(senderCurrency) * 10.0
-                ).toFixed(2)} ${senderCurrency.toUpperCase()} is required`
+            senderAmount: Yup.string()
+              .matches(
+                /^[+-]?\d{1,3}(?:,?\d{3})*(?:\.\d{2})?$/,
+                "Amount must be a valid number"
               )
               .required("A send amount is required"),
           })
         }
         onSubmit={({ email, senderAmount }, { setSubmitting }) => {
-          setSubmitting(true)
+          setSubmitting(true);
           dispatch({
-              type: "confirm",
-              payload: {
-                email,
-                senderAmount: senderAmount.toFixed(2),
-                fee: getFee(senderAmount).toFixed(2),
-                senderCurrency: senderCurrency.toUpperCase(),
-                total: (senderAmount + getFee(senderAmount)).toFixed(2),
-            }
-          })
+            type: "confirm",
+            payload: {
+              email,
+              senderAmount: senderAmount.toFixed(2),
+              fee: getFee(senderAmount).toFixed(2),
+              senderCurrency: senderCurrency.toUpperCase(),
+              total: (senderAmount + getFee(senderAmount)).toFixed(2),
+            },
+          });
         }}
       >
         {({ handleBlur, handleChange, handleSubmit, values }) => (
@@ -134,9 +136,7 @@ function Details({ state, dispatch }) {
                 <FormGroupPrepend>$</FormGroupPrepend>
                 <FormGroupControl
                   id="sender-amount"
-                  type="number"
-                  step="0.01"
-                  min="10"
+                  type="text"
                   name="senderAmount"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -170,15 +170,17 @@ function Details({ state, dispatch }) {
               <FormGroup>
                 <FormGroupPrepend>$</FormGroupPrepend>
                 <FormGroupControl
-                  id="recipient-amount"
-                  type="number"
-                  name="recipientAmount"
-                  value={
-                    Number(
-                      values.senderAmount * exchangeRate(recipientCurrency)
-                    ).toFixed(2)
-                  }
-                  readOnly
+					id="recipient-amount"
+					type="text"
+					name="recipientAmount"
+					value={(
+						parseAmount(values.senderAmount) *
+						exchangeRate(recipientCurrency)
+					).toLocaleString("en-CA", {
+						minimumFractionDigits: 2,
+						maximumFractionDigits: 2,
+					})}
+					readOnly
                 />
                 <FormGroupAppend>
                   <Label label="recipient-currency" nomargin>
@@ -209,7 +211,7 @@ function Details({ state, dispatch }) {
             <TotalFees>
               Total fees{" "}
               <Fee>
-                {getFee(values.senderAmount).toFixed(2)}{" "}
+                {getFee(parseAmount(values.senderAmount)).toFixed(2)}{" "}
                 {senderCurrency.toUpperCase()}
               </Fee>
             </TotalFees>
@@ -219,9 +221,7 @@ function Details({ state, dispatch }) {
             <TotalToPay>
               Total To Pay{" "}
               <Amount>
-                {Number(
-                  values.senderAmount + getFee(values.senderAmount)
-                ).toFixed(2)}{" "}
+                {parseAmount(values.senderAmount).toFixed(2)}{" "}
                 {senderCurrency.toUpperCase()}
               </Amount>
             </TotalToPay>
