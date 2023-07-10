@@ -62,4 +62,3 @@ export const Total = styled(SendAmount)`
 `
 
 export const TotalAmount = styled(Amount)``
-

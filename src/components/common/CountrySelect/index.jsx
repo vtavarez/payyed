@@ -11,15 +11,16 @@ const theme = theme => ({
   }
 })
 
-const DropdownIndicator = props => {
-  return (
-    <components.DropdownIndicator {...props}>
-      <FontAwesomeIcon icon="sort" color="#212529" />
-    </components.DropdownIndicator>
-  )
-}
-
 export function CountrySelect(props) {
+
+  const DropdownIndicator = props => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <FontAwesomeIcon icon="sort" color="#212529" />
+      </components.DropdownIndicator>
+    )
+  }
+  
   return (
     <Select
       {...props}

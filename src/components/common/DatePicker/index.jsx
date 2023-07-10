@@ -12,7 +12,8 @@ export function DatePicker(props) {
   useEffect(() => {
    let $picker = $(inputRef.current)
    $picker.daterangepicker({ ...props, applyButtonClasses: "drp-apply" })
-   $picker.on('apply.daterangepicker', props.onApply)
+   $picker.on('apply.daterangepicker', props.dateSelected)
+   $picker.on('hide.daterangepicker', props.dateSelected)
    return () => {
      $picker = null;
    }
@@ -21,7 +22,7 @@ export function DatePicker(props) {
 
   return (
     <div className="date-picker__wrapper">
-      <TextInput ref={inputRef} type="text" name="daterange" />
+      <TextInput ref={inputRef} type="text" {...props} />
       <span className="date-picker__icon">
         <FontAwesomeIcon icon="calendar-alt" size="1x" transform="grow-5" />
       </span>

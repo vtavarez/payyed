@@ -1,16 +1,12 @@
 import styled from "styled-components"
 
 export const Heading = styled.h2`
-  font-family: "rubik", sans-serif;
   text-align: center;
   letter-spacing: -1px;
   margin-top: 1rem;
   font-size: 1.5rem;
-  font-weight: 430;
-  margin-bottom: 0.5rem;
   @media (min-width: 768px) {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
   }
 `
 
@@ -21,9 +17,7 @@ export const SubHeading = styled.p`
 `
 
 export const FormName = styled.h3`
-  font-family: "rubik", sans-serif;
   font-size: 1.3125rem;
-  font-weight: 430;
   padding-bottom: 5px;
   margin-bottom: 1rem;
 `
@@ -52,13 +46,12 @@ export const Rate = styled.span`
 
 export const Divider = styled.hr`
   margin-inline: -15px;
- @media (min-width: 768px) {
+  @media (min-width: 768px) {
    margin-inline: ${({ stretch }) => stretch && "-3rem"};
  }
 `
 
 export const TotalFees = styled.p`
-  font-family: "rubik", sans-serif;
   position: relative;
   margin-top: 0;
   margin-bottom: 0.25rem;

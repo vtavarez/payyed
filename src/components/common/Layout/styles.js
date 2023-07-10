@@ -10,8 +10,11 @@ const Global = createGlobalStyle`
   }
 
   h1,h2,h3,h4,h5,h6 {
-    font-family: "rubikmedium", sans-serif;
+    font-family: "rubik", sans-serif;
     color: #1e1d1c;
+    font-weight: 430;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
   }
   
   p {
@@ -20,8 +23,9 @@ const Global = createGlobalStyle`
   }
 
   button {
-    font-family: "rubikmedium", sans-serif;
+    font-family: "rubik", sans-serif;
     line-height: 1.5;
+    font-weight: 680;
   }
 
   input[type=email],

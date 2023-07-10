@@ -1,8 +1,6 @@
 import styled from "styled-components"
 
 export const Button = styled.button`
-  font-family: "rubik", sans-serif;
-  font-weight: 680;
   background-color: transparent;
   color: #212529;
   transition: all 0.5s ease;
@@ -14,7 +12,6 @@ export const Button = styled.button`
   border: 1px solid transparent;
   background-color: transparent;
   padding: 0.8rem 2rem;
-  line-height: 1.5;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
 
   &:hover {
