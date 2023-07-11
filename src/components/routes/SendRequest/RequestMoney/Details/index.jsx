@@ -1,7 +1,6 @@
 import React, { Fragment } from "react"
 import { Formik, ErrorMessage } from "formik"
 import * as Yup from "yup"
-import moment from "moment"
 import {
   Label,
   TextInput,
@@ -17,6 +16,7 @@ import {
   DatePicker,
   ButtonPrimary
 } from "components/common"
+import { formatDate, dateFormat, tomorrow } from "utils"
 import { Heading, SubHeading, Form, FormName, Divider } from "./styles"
 
 /**
@@ -57,18 +57,29 @@ function Details() {
                     country: countries[0],
                     requestAmount: "1,000.00",
                     description: "",
-                    paymentDue: moment().add(1, "days")
+                    paymentDue: formatDate(tomorrow, dateFormat),
                 }}
-                validationSchema={() => Yup.object().shape({
-                    name: Yup.string().required("A recipient name is required"),
-                    email: Yup.string().email().required("A recipient email address is required"),
-                    country: Yup.string().required("Required"),
-                    requestAmount: Yup.string().required("Required"),
-                    description: Yup.string().notRequired(),
-                    paymentDue: Yup.date().required("Required")
-                })}
-                onSubmit={(values, { setSubmitting }) => {
-                    console.log(values)
+                validationSchema={() =>
+                    Yup.object().shape({
+                        name: Yup.string().required(
+                            "A recipient name is required"
+                        ),
+                        email: Yup.string()
+                            .email()
+                            .required("A recipient email address is required"),
+                        country: Yup.string().required("Required"),
+                        requestAmount: Yup.string()
+                            .matches(
+                                /^[+-]?\d{1,3}(?:,?\d{3})*(?:\.\d{2})?$/,
+                                "Amount must be a valid number"
+                            )
+                            .required("A request amount is required"),
+                        description: Yup.string().notRequired(),
+                        paymentDue: Yup.date().required("Required"),
+                    })
+                }
+                onSubmit={(values ) => {
+                    console.log(values);
                 }}
             >
                 {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -110,7 +121,7 @@ function Details() {
                                 name="country"
                                 options={countries}
                                 defaultValue={values.country}
-                                onChange={(option) => handleChange('country')}
+                                onChange={(option) => handleChange("country")}
                                 onBlur={handleBlur}
                                 isSearchable
                             />
@@ -130,16 +141,17 @@ function Details() {
                                     value={values.requestAmount}
                                 />
                                 <FormGroupAppend>
-                                <Label label="currency" nomargin>
-                                    <CurrencySelect
-                                        id="currency"
-                                        options={currencies}
-                                        defaultValue={currencies[0]}
-                                        isSearchable
-                                    />
-                                </Label>
+                                    <Label label="currency" nomargin>
+                                        <CurrencySelect
+                                            id="currency"
+                                            options={currencies}
+                                            defaultValue={currencies[0]}
+                                            isSearchable
+                                        />
+                                    </Label>
                                 </FormGroupAppend>
                             </FormGroup>
+                            <ErrorMessage component={Error} name="requestAmount" />
                         </Label>
 
                         <Label label="payment-description">
@@ -154,7 +166,10 @@ function Details() {
                                 onBlur={handleBlur}
                                 value={values.description}
                             />
-                            <ErrorMessage component={Error} name="description" />
+                            <ErrorMessage
+                                component={Error}
+                                name="description"
+                            />
                         </Label>
 
                         <Label label="payment-due">

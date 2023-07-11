@@ -1,22 +1,26 @@
 import React from "react"
-import moment from "moment"
+import {
+    formatDate,
+    dateFormat,
+    today,
+    yesterday,
+    lastSevenDays,
+    lastThirtyDays,
+    monthStart,
+    monthEnd,
+    lastMonthStart,
+    lastMonthEnd,
+} from "utils";
 import { DatePicker as Picker } from "components/common"
 
 function DatePicker() {
   const ranges = {
-    Today: [moment(), moment()],
-    Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-    "Last 7 Days": [moment().subtract(6, "days"), moment()],
-    "Last 30 Days": [moment().subtract(29, "days"), moment()],
-    "This Month": [moment().startOf("month"), moment().endOf("month")],
-    "Last Month": [
-      moment()
-        .subtract(1, "month")
-        .startOf("month"),
-      moment()
-        .subtract(1, "month")
-        .endOf("month")
-    ]
+    Today: [formatDate(today, dateFormat), formatDate(today, dateFormat)],
+    Yesterday: [formatDate(yesterday, dateFormat), formatDate(yesterday, dateFormat)],
+    "Last 7 Days": [formatDate(lastSevenDays, dateFormat), formatDate(today, dateFormat)],
+    "Last 30 Days": [formatDate(lastThirtyDays, dateFormat), formatDate(today, dateFormat)],
+    "This Month": [formatDate(monthStart, dateFormat), formatDate(monthEnd, dateFormat)],
+    "Last Month": [formatDate(lastMonthStart, dateFormat), formatDate(lastMonthEnd, dateFormat)]
   }
 
   const onApply = (e, picker) => {
@@ -26,10 +30,10 @@ function DatePicker() {
   return (
     <Picker
       ranges={ranges}
-      startDate={moment().subtract(29, "days")}
-      endDate={moment()}
+      startDate={formatDate(monthStart, dateFormat)}
+      endDate={formatDate(monthEnd, dateFormat)}
       alwaysShowCalendars={true}
-      onApply={onApply}
+      dateSelected={onApply}
     />
   )
 }
