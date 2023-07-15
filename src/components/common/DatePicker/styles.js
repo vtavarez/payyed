@@ -1,3 +1,5 @@
+import styled from "styled-components"
+
 export const Container = styled.div`
     position: absolute;
     left: 0
@@ -37,3 +39,5 @@ export const Ranges = styled.div`
 `
 
 export const Calendars = styled.div``
+
+export const RangeButton = styled.button``

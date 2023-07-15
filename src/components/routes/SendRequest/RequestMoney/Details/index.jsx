@@ -16,12 +16,12 @@ import {
   DatePicker,
   ButtonPrimary
 } from "components/common"
-import { formatDate, dateFormat, tomorrow } from "utils"
+import { formatDate, dateFormat, tomorrow } from "utils/functions"
 import { Heading, SubHeading, Form, FormName, Divider } from "./styles"
 
 /**
  * Renders the details section of the Request Money page, including a form for the payer's details.
- * Uses Formik and Yup for form validation and moment for date formatting.
+ * Uses Formik and Yup for form validation and date-fns for date formatting.
  * @returns JSX element containing the details section of the Request Money page.
  */
 

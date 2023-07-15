@@ -10,7 +10,7 @@ import {
     monthEnd,
     lastMonthStart,
     lastMonthEnd,
-} from "utils";
+} from "utils/functions";
 import { DatePicker as Picker } from "components/common"
 
 function DatePicker() {
@@ -23,8 +23,8 @@ function DatePicker() {
     "Last Month": [formatDate(lastMonthStart, dateFormat), formatDate(lastMonthEnd, dateFormat)]
   }
 
-  const onApply = (e, picker) => {
-    console.log(picker.startDate, picker.endDate)
+  const selectedDate = (e, picker) => {
+    console.log(e.target.value)
   }
 
   return (
@@ -33,7 +33,7 @@ function DatePicker() {
       startDate={formatDate(monthStart, dateFormat)}
       endDate={formatDate(monthEnd, dateFormat)}
       alwaysShowCalendars={true}
-      dateSelected={onApply}
+      dateSelected={selectedDate}
     />
   )
 }
