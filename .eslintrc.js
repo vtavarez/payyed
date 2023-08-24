@@ -2,9 +2,9 @@ module.exports = {
   settings: {
     "import/resolver": {
       node: {
-        paths: ["src"]
-      }
-    }
+        paths: ["src"],
+      },
+    },
   },
   extends: ["react-app", "plugin:jsx-a11y/recommended"],
   plugins: ["jsx-a11y"],
@@ -19,11 +19,7 @@ module.exports = {
     "jsx-a11y/label-has-associated-control": [
       1,
       {
-        labelComponents: [
-          "Label",
-          "CheckboxInputLabel",
-          "RadioInputLabel",
-        ],
+        labelComponents: ["Label", "CheckboxInputLabel", "RadioInputLabel"],
         labelAttributes: ["label"],
         controlComponents: [
           "TextInput",
@@ -33,10 +29,10 @@ module.exports = {
           "TextArea",
           "CountrySelect",
           "CurrencySelect",
-          "FormGroupControl"
+          "FormGroupControl",
         ],
-        depth: 3
-      }
-    ]
-  }
-}
+        depth: 3,
+      },
+    ],
+  },
+};

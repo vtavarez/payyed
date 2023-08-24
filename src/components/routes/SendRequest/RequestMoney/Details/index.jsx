@@ -1,23 +1,23 @@
-import React, { Fragment } from "react"
-import { Formik, ErrorMessage } from "formik"
-import * as Yup from "yup"
+import React, { Fragment } from "react";
+import { Formik, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import {
-  Label,
-  TextInput,
-  TextArea,
-  InputName,
-  FormGroup,
-  FormGroupControl,
-  FormGroupPrepend,
-  FormGroupAppend,
-  Error,
-  CurrencySelect,
-  CountrySelect,
-  DatePicker,
-  ButtonPrimary
-} from "components/common"
-import { formatDate, dateFormat, tomorrow } from "utils/functions"
-import { Heading, SubHeading, Form, FormName, Divider } from "./styles"
+    Label,
+    TextInput,
+    TextArea,
+    InputName,
+    FormGroup,
+    FormGroupControl,
+    FormGroupPrepend,
+    FormGroupAppend,
+    Error,
+    CurrencySelect,
+    CountrySelect,
+    DatePicker,
+    ButtonPrimary,
+} from "components/common";
+import { formatDate, dateFormat, tomorrow } from "utils/functions";
+import { Heading, SubHeading, Form, FormName, Divider } from "./styles";
 
 /**
  * Renders the details section of the Request Money page, including a form for the payer's details.
@@ -26,30 +26,28 @@ import { Heading, SubHeading, Form, FormName, Divider } from "./styles"
  */
 
 function Details() {
-  // fake data set
-  const countries = [
-    { value: "us", label: "United States" },
-    { value: "ca", label: "Canada" },
-    { value: "eng", label: "England" },
-    { value: "mx", label: "Mexico" }
-  ]
+    // fake data set
+    const countries = [
+        { value: "us", label: "United States" },
+        { value: "ca", label: "Canada" },
+        { value: "eng", label: "England" },
+        { value: "mx", label: "Mexico" },
+    ];
 
-  const currencies = [
-    { value: "usd", label: "USD", description: "United States dollar" },
-    { value: "cad", label: "CAD", description: "Canadian dollar" },
-    { value: "gbp", label: "GBP", description: "British pound" },
-    { value: "mxn", label: "MXN", description: "Mexican peso" }
-  ]
+    const currencies = [
+        { value: "usd", label: "USD", description: "United States dollar" },
+        { value: "cad", label: "CAD", description: "Canadian dollar" },
+        { value: "gbp", label: "GBP", description: "British pound" },
+        { value: "mxn", label: "MXN", description: "Mexican peso" },
+    ];
 
-  const parseAmount = (amount) => Number(amount.replace(/,/g, ""))
+    const parseAmount = (amount) => Number(amount.replace(/,/g, ""));
 
     return (
         <Fragment>
             <Heading>Request Money</Heading>
 
-            <SubHeading>
-                Request payment anytime, anywhere around the globe.
-            </SubHeading>
+            <SubHeading>Request payment anytime, anywhere around the globe.</SubHeading>
             <Formik
                 initialValues={{
                     name: "",
@@ -61,9 +59,7 @@ function Details() {
                 }}
                 validationSchema={() =>
                     Yup.object().shape({
-                        name: Yup.string().required(
-                            "A recipient name is required"
-                        ),
+                        name: Yup.string().required("A recipient name is required"),
                         email: Yup.string()
                             .email()
                             .required("A recipient email address is required"),
@@ -71,14 +67,14 @@ function Details() {
                         requestAmount: Yup.string()
                             .matches(
                                 /^[+-]?\d{1,3}(?:,?\d{3})*(?:\.\d{2})?$/,
-                                "Amount must be a valid number"
+                                "Amount must be a valid number",
                             )
                             .required("A request amount is required"),
                         description: Yup.string().notRequired(),
                         paymentDue: Yup.date().required("Required"),
                     })
                 }
-                onSubmit={(values ) => {
+                onSubmit={(values) => {
                     console.log(values);
                 }}
             >
@@ -166,10 +162,7 @@ function Details() {
                                 onBlur={handleBlur}
                                 value={values.description}
                             />
-                            <ErrorMessage
-                                component={Error}
-                                name="description"
-                            />
+                            <ErrorMessage component={Error} name="description" />
                         </Label>
 
                         <Label label="payment-due">
@@ -196,4 +189,4 @@ function Details() {
     );
 }
 
-export default Details
+export default Details;

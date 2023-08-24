@@ -13,26 +13,22 @@ import {
 export function StepProgress({ steps, state, dispatch }) {
   return (
     <Wrapper>
-      {steps.map(({ name }, index) => (
+      {steps.map(({ name }) => (
         <Step
           key={name}
-          onClick={(e) => index === 0 && dispatch({ type: "reset" })}
+          onClick={(e) => name === "details" && dispatch({ type: "reset" })}
         >
           <Name>{name}</Name>
           <Progress>
             <Circle
-              active={Boolean(state[name].active && index !== steps.length - 1)}
-              completed={Boolean(
-                state[name].completed && index !== steps.length - 1
-              )}
+              active={state[name].active}
+              completed={state[name].completed}
             >
               {state[name].completed && (
                 <Completed as={FontAwesomeIcon} icon="check-circle" />
               )}
             </Circle>
-            {index !== steps.length - 1 && (
-              <Line completed={Boolean(state[name].completed)} />
-            )}
+            {name !== "success" && <Line completed={state[name].completed} />}
           </Progress>
         </Step>
       ))}
