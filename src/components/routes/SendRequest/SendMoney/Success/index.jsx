@@ -14,14 +14,7 @@ import {
     ActiveLink,
 } from "./styles";
 
-function Success({
-    state: {
-        success: {
-            payload: { email, total },
-        },
-    },
-    dispatch,
-}) {
+function Success({ payload: { email, total }, dispatch }) {
     return (
         <Fragment>
             <Heading>Send Money</Heading>

@@ -15,5 +15,20 @@ export const monthStart = startOfMonth(today);
 export const monthEnd = endOfMonth(today);
 export const lastMonthStart = subMonths(monthStart, 1);
 export const lastMonthEnd = subMonths(monthEnd, 1);
-
 export const formatDate = (date, dateFormat) => format(date, dateFormat);
+
+/**
+ * Parses a string representing a monetary amount and returns a number.
+ * @param {string} amount - The string representing the monetary amount.
+ * @returns {number} - The parsed monetary amount as a number.
+ */
+
+export const parseAmount = (amount) => Number.parseFloat(amount.replace(/,/g, ""));
+
+/**
+ * Calculates the fee for a given amount.
+ * @param {number} amount - The amount to calculate the fee for.
+ * @returns {number} The fee for the given amount.
+ */
+
+export const getFee = (amount) => amount * 0.01;

@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import App from "./components/App"
-import { Provider } from "./state"
+import { Provider } from "./utils/providers"
 
 ReactDOM.render(
   <Provider>

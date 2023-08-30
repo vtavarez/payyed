@@ -1,5 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Formik, ErrorMessage } from "formik";
+import { useQuery } from "@tanstack/react-query";
+import { getExchangeRates } from "api";
 import * as Yup from "yup";
 import {
     Label,
@@ -16,7 +18,7 @@ import {
     DatePicker,
     ButtonPrimary,
 } from "components/common";
-import { formatDate, dateFormat, tomorrow } from "utils/functions";
+import { parseAmount, formatDate, dateFormat, tomorrow } from "utils/functions";
 import { Heading, SubHeading, Form, FormName, Divider } from "./styles";
 
 /**
@@ -26,59 +28,63 @@ import { Heading, SubHeading, Form, FormName, Divider } from "./styles";
  */
 
 function Details() {
-    // fake data set
-    const countries = [
-        { value: "us", label: "United States" },
-        { value: "ca", label: "Canada" },
-        { value: "eng", label: "England" },
-        { value: "mx", label: "Mexico" },
-    ];
+    const [currency, setCurrency] = useState({
+        base: "USD",
+        recipient: "CAD",
+        recipientLocale: "en-CA",
+    });
 
-    const currencies = [
-        { value: "usd", label: "USD", description: "United States dollar" },
-        { value: "cad", label: "CAD", description: "Canadian dollar" },
-        { value: "gbp", label: "GBP", description: "British pound" },
-        { value: "mxn", label: "MXN", description: "Mexican peso" },
-    ];
+    // Query Exhange Rates
+    const {
+        data: { rates },
+        status,
+    } = useQuery({
+        queryKey: ["rates", currency.base, currency.recipient],
+        queryFn: getExchangeRates,
+    });
 
-    const parseAmount = (amount) => Number(amount.replace(/,/g, ""));
+    //Initial Form Values
+    const values = {
+        name: "",
+        email: "",
+        requestAmount: "1,000.00",
+        description: "",
+        paymentDue: formatDate(tomorrow, dateFormat),
+    };
+
+    // Validation Schema
+    const schema = () => {
+        Yup.object().shape({
+            name: Yup.string().required("A recipient name is required"),
+            email: Yup.string().email().required("A recipient email address is required"),
+            country: Yup.string().required("Required"),
+            requestAmount: Yup.string()
+                .matches(/^[+-]?\d{1,3}(?:,?\d{3})*(?:\.\d{2})?$/, "Amount must be a valid number")
+                .required("A request amount is required"),
+            description: Yup.string().notRequired(),
+            paymentDue: Yup.date().required("Required"),
+        });
+    };
+
+    // Country Change
+    const countryChange = (country) => country.value;
+
+    // Form Submition
+    const submition = (values) => {
+        console.log(values);
+    };
 
     return (
         <Fragment>
             <Heading>Request Money</Heading>
-
             <SubHeading>Request payment anytime, anywhere around the globe.</SubHeading>
-            <Formik
-                initialValues={{
-                    name: "",
-                    email: "",
-                    country: countries[0],
-                    requestAmount: "1,000.00",
-                    description: "",
-                    paymentDue: formatDate(tomorrow, dateFormat),
-                }}
-                validationSchema={() =>
-                    Yup.object().shape({
-                        name: Yup.string().required("A recipient name is required"),
-                        email: Yup.string()
-                            .email()
-                            .required("A recipient email address is required"),
-                        country: Yup.string().required("Required"),
-                        requestAmount: Yup.string()
-                            .matches(
-                                /^[+-]?\d{1,3}(?:,?\d{3})*(?:\.\d{2})?$/,
-                                "Amount must be a valid number",
-                            )
-                            .required("A request amount is required"),
-                        description: Yup.string().notRequired(),
-                        paymentDue: Yup.date().required("Required"),
-                    })
-                }
-                onSubmit={(values) => {
-                    console.log(values);
-                }}
-            >
-                {({ values, handleChange, handleBlur, handleSubmit }) => (
+            <Formik initialValues={values} validationSchema={schema} onSubmit={submition}>
+                {({
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    values: { name, email, description, requestAmount, paymentDue },
+                }) => (
                     <Form onSubmit={handleSubmit}>
                         <FormName>Payer Details</FormName>
                         <Divider stretch />
@@ -91,11 +97,10 @@ function Details() {
                                 placeholder="Enter Name"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                value={values.name}
+                                value={name}
                             />
                             <ErrorMessage component={Error} name="name" />
                         </Label>
-
                         <Label label="email">
                             <InputName>Email</InputName>
                             <TextInput
@@ -105,25 +110,21 @@ function Details() {
                                 placeholder="Enter Email Address"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                value={values.email}
+                                value={email}
                             />
                             <ErrorMessage component={Error} name="email" />
                         </Label>
-
                         <Label label="country">
                             <InputName>Country</InputName>
                             <CountrySelect
                                 id="country"
                                 name="country"
-                                options={countries}
-                                defaultValue={values.country}
-                                onChange={(option) => handleChange("country")}
+                                onChange={countryChange}
                                 onBlur={handleBlur}
                                 isSearchable
                             />
                             <ErrorMessage component={Error} name="country" />
                         </Label>
-
                         <Label label="request-amount">
                             <InputName>Amount</InputName>
                             <FormGroup>
@@ -134,14 +135,14 @@ function Details() {
                                     name="requestAmount"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    value={values.requestAmount}
+                                    value={requestAmount}
                                 />
                                 <FormGroupAppend>
                                     <Label label="currency" nomargin>
                                         <CurrencySelect
                                             id="currency"
-                                            options={currencies}
-                                            defaultValue={currencies[0]}
+                                            name="currency"
+                                            onChange={currencyChange}
                                             isSearchable
                                         />
                                     </Label>
@@ -149,7 +150,6 @@ function Details() {
                             </FormGroup>
                             <ErrorMessage component={Error} name="requestAmount" />
                         </Label>
-
                         <Label label="payment-description">
                             <InputName>Description</InputName>
                             <TextArea
@@ -157,28 +157,23 @@ function Details() {
                                 name="description"
                                 rows="4"
                                 placeholder="Payment Description"
-                                aria-label="Include a payment description"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                value={values.description}
+                                value={description}
                             />
                             <ErrorMessage component={Error} name="description" />
                         </Label>
-
                         <Label label="payment-due">
                             <InputName>Payment due by</InputName>
                             <DatePicker
                                 id="payment-due"
                                 name="paymentDue"
-                                minDate={values.paymentDue}
-                                alwaysShowCalendars={true}
-                                singleDatePicker={true}
-                                dateSelected={handleChange}
+                                selected={selected}
+                                setSelected={setSelected}
                                 onBlur={handleBlur}
                             />
                             <ErrorMessage component={Error} name="paymentDue" />
                         </Label>
-
                         <ButtonPrimary stretch type="submit">
                             Continue
                         </ButtonPrimary>

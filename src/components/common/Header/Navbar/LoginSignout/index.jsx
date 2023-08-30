@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react"
-import { State } from "state"
+import { State } from "utils/providers"
 import { Link, navigate } from "@reach/router"
 import { NavLink, SignupButton, SignoutButton } from "./styles"
 

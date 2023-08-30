@@ -17,46 +17,44 @@ import {
     TotalAmount,
 } from "./styles";
 
-function Confirm({
-    state: {
-        confirm: { email, fee, senderCurrency, senderAmount, total },
-    },
-    dispatch,
-}) {
+function Confirm({ payload: { email, fee, baseCurrency, senderAmount, total }, dispatch }) {
+    //Initial Form Values
+    const values = {
+        description: "",
+    };
+
+    // Validation Schema
+    const schema = () => {
+        return Yup.object().shape({
+            description: Yup.string()
+                .trim()
+                .matches(
+                    /[a-zA-Z0-9!.,?;:@#&*%$]$/,
+                    "Description cannot include any special characters, or start with a space",
+                )
+                .required("A payment description is required"),
+        });
+    };
+
+    // Form Submition
+    const submition = (values) => {
+        dispatch({
+            type: "success",
+            payload: {
+                email,
+                total,
+                ...values,
+            },
+        });
+    };
     return (
         <Fragment>
             <Heading>Send Money</Heading>
             <SubHeading>
                 You are sending money to <Email>{email}</Email>
             </SubHeading>
-            <Formik
-                initialValues={{
-                    description: "",
-                }}
-                validationSchema={() =>
-                    Yup.object().shape({
-                        description: Yup.string()
-                            .trim()
-                            .matches(
-                                /[a-zA-Z0-9!.,?;:@#&*%$]$/,
-                                "Description cannot include any special characters, or start with a space",
-                            )
-                            .required("A payment description is required"),
-                    })
-                }
-                onSubmit={(values, { setSubmitting }) => {
-                    setSubmitting(true);
-                    dispatch({
-                        type: "success",
-                        payload: {
-                            email,
-                            total,
-                            ...values,
-                        },
-                    });
-                }}
-            >
-                {({ handleSubmit, handleChange, handleBlur, values }) => (
+            <Formik initialValues={values} validationSchema={schema} onSubmit={submition}>
+                {({ handleSubmit, handleChange, handleBlur, values: { description } }) => (
                     <Form onSubmit={handleSubmit}>
                         <Label label="description">
                             <InputName>Description</InputName>
@@ -67,7 +65,7 @@ function Confirm({
                                 placeholder="Payment Description"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                value={values.description}
+                                value={description}
                             />
                             <ErrorMessage component={Error} name="description" />
                         </Label>
@@ -75,20 +73,20 @@ function Confirm({
                         <SendAmount>
                             Send Amount{" "}
                             <Amount>
-                                {senderAmount} {senderCurrency}
+                                {senderAmount} {baseCurrency}
                             </Amount>
                         </SendAmount>
                         <TotalFees>
                             Total Fees{" "}
                             <Fees>
-                                {fee} {senderCurrency}
+                                {fee} {baseCurrency}
                             </Fees>
                         </TotalFees>
                         <Divider />
                         <Total>
                             Total{" "}
                             <TotalAmount>
-                                {total} {senderCurrency}
+                                {total} {baseCurrency}
                             </TotalAmount>
                         </Total>
                         <ButtonPrimary stretch type="submit">

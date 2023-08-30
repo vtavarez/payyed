@@ -1,63 +1,10 @@
-import React, { Fragment, useReducer } from "react";
+import React, { Fragment } from "react";
+import { useSendRequestReducer } from "utils/hooks";
 import { steps } from "./steps";
 import { StepProgress } from "components/common";
 
 function RequestMoney() {
-    const initialState = {
-        details: {
-            active: true,
-            completed: false,
-        },
-        confirm: {
-            active: false,
-            completed: false,
-            payload: {},
-        },
-        success: {
-            active: false,
-            completed: false,
-            payload: {},
-        },
-    };
-
-    const reducer = (state, action) => {
-        switch (action.type) {
-            case "confirm":
-                return {
-                    ...state,
-                    details: {
-                        active: false,
-                        completed: true,
-                    },
-                    confirm: {
-                        active: true,
-                        completed: false,
-                        payload: action.payload,
-                    },
-                };
-            case "success":
-                return {
-                    ...state,
-                    confirm: {
-                        active: false,
-                        completed: true,
-                    },
-                    success: {
-                        active: true,
-                        completed: true,
-                        payload: action.payload,
-                    },
-                };
-            case "reset":
-                return {
-                    ...initialState,
-                };
-            default:
-                return state;
-        }
-    };
-
-    const [state, dispatcher] = useReducer(reducer, initialState);
+    const [state,  dispatcher] = useSendRequestReducer();
 
     return (
         <Fragment>
